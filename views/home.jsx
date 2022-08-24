@@ -8,13 +8,13 @@ export function Home() {
         <div className="mail-home-img">
         <Link to="/mail">
 
-    <img src="/assets/img/gmail.jpg" alt=""></img>
+    <img src="./assets/img/gmail.jpg" alt=""></img>
         </Link>
         </div>
 
         <div className="note-home-img">
         <Link to="/note">
-        <img src="/assets/img/note.jpg" alt=""></img>
+        <img src="./assets/img/note.jpg" alt=""></img>
         </Link>
         </div>
 

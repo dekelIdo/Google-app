@@ -9,10 +9,11 @@ const { Route, Switch } = ReactRouterDOM
 export function MailApp() {
     return <Router>
         <section className="mail-app">
+            
             <MailCompose />
+
             <MailFilter />
             <MailList />
-
             <Switch>
 
                 <Route path="/mail/:mailId" component={MailDetails} />
