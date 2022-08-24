@@ -3,7 +3,7 @@ import { mailService } from "../services/mail.service.js"
 export class MailDetails extends React.Component {
 
     state = {
-        email:null
+        mail: null
 
     }
 
@@ -11,24 +11,43 @@ export class MailDetails extends React.Component {
         this.loadMail()
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.params.mailId !== this.props.match.params.mailId) {
+            this.loadMail()
+        }
+    }
+
     loadMail = () => {
 
-        const { bookId } = this.props.match.params
-        mailService.findEmailById(bookId).then((email) => {
-            // if (!email) return this.onGoBack()
-            this.setState({ email })
+        const { mailId } = this.props.match.params
+
+        mailService.findEmailById(mailId).then((mail) => {
+            if (!mail) return this.onGoBack()
+
+            this.setState({mail })
         })
     }
+
 
     onGoBack = () => {
         this.props.history.push('/mail')
     }
 
-
     render() {
-        return <div>
-            <h1>MailDetails</h1>
-        </div>
+
+        const { mail } = this.state
+        console.log(mail)
+        if (!mail) return <div>wait a second</div>
+
+        return <section className="mail-details">
+            <div className="mail-details-main"><span>{mail.to}</span><span>{mail.sentAt}</span></div>
+            <h1>{mail.subject}</h1>
+            <h1>{mail.body}</h1>
+            <h1>{mail.id}</h1>
+            
+        </section>
+
+
 
     }
 }

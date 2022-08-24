@@ -7,6 +7,10 @@ export const mailService = {
     getInboxEmails,
     findEmailById,
 }
+const loggedInUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+   }
 
 const KEY = 'emailsDB'
 
@@ -24,17 +28,17 @@ function getInboxEmails(filterBy) {
 }
 
 
-function findEmailById(emailId){
-if(!emailId) Promise.resolve(null)
-const emails = _loadFromStorage()|| gEmails
-const cureEmail = emails.find(email=> email.id=== emailId)
-return Promise.resolve(cureEmail)
 
+function findEmailById(emailId) {
+    if (!emailId) Promise.resolve(null)
+    const emails = _loadFromStorage() || gEmails
+    const currEmail = emails.find(email => email.id === emailId)
+    return Promise.resolve(currEmail)
 }
 
 
 function _createEmail() {
-    return    {
+    return {
         id: utilService.makeId(),
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
@@ -44,7 +48,7 @@ function _createEmail() {
     }
 }
 
-function  _createEmails() {
+function _createEmails() {
     const emails = []
     for (let i = 0; i < 5; i++) {
 
@@ -54,8 +58,12 @@ function  _createEmails() {
 }
 
 
+function getUserLogIn(){
+    return loggedInUser
+}
+
 function _saveToStorage(emails) {
-    storageService.saveToStorage(KEY ,emails)
+    storageService.saveToStorage(KEY, emails)
 }
 
 function _loadFromStorage() {
@@ -63,7 +71,7 @@ function _loadFromStorage() {
 }
 
 
- const gEmails = [
+const gEmails = [
     {
         id: utilService.makeId(),
         subject: 'Miss you!',

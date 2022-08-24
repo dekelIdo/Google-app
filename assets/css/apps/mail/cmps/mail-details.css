@@ -1,0 +1,14 @@
+.mail-details-main{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.mail-details main span{
+    font-size: 1em;
+    font-style: bold;
+}
+
+
+

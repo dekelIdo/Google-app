@@ -11,6 +11,7 @@ export class MailApp extends React.Component {
 
     state = {
         emails: []
+        
     }
 
     componentDidMount() {
