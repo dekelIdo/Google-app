@@ -1,5 +1,5 @@
 header {
-    background: lightcyan;
+    background: var(--side-bar);
     border-bottom: 2px solid white;
 }
 
@@ -7,6 +7,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
+    box-shadow: var(--box-shadow);
 }
 
 nav a {
@@ -18,7 +19,8 @@ nav a:active {
 }
 
 nav a.active {
-    color: darkblue;
+    color: var(--active);
     font-weight: bold;
     text-decoration: overline;
 }
+

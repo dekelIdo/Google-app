@@ -21,3 +21,60 @@
 .grid {
     display: grid;
 }
+
+/* icons font awesome */
+.fa {
+    font-family: fa;
+}
+
+.fa.trash::before {
+    content: '\f2ed';
+}
+
+.fa.edit::before {
+    content: '\f044';
+}
+
+.fa.inbox::before {
+    content: '\f310';
+}
+.fa.image::before {
+    content: '\f03e';
+}
+
+.fa.pin::before {
+    content: '\f08d';
+}
+
+.fa.sent::before {
+    content: '\e20a';
+}
+
+.fa.star::before {
+    content: '\f005';
+}
+
+.fa.add::before {
+    content: '\2b';
+}
+
+.fa.color::before {
+    content: '\f53f';
+}
+
+.fa.grip::before {
+    content: '\e195';
+}
+
+.fa.checked::before {
+    content: '\e4e8';
+}
+
+.fa.notes::before {
+    content: '\e1da';
+}
+
+.fa.logo::before {
+    content: '\f59e';
+}
+
