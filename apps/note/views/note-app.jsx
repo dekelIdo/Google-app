@@ -1,4 +1,4 @@
-import { NoteEdit } from "./note-edit.jsx"
+import { NoteEdit } from "../cmps/note-edit.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { NoteFilter } from "../cmps/note-filter.jsx"
 

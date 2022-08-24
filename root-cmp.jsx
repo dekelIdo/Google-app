@@ -1,8 +1,8 @@
 import { AppHeader } from "./cmps/app-header.jsx"
 import { About } from "./views/about.jsx"
 import { Home } from "./views/home.jsx"
-import { NoteApp } from "./apps/note/cmps/note-app.jsx"
-import { MailApp } from "./apps/mail/cmps/mail-app.jsx"
+import { NoteApp } from "./apps/note/views/note-app.jsx"
+import { MailApp } from "./apps/mail/views/mail-app.jsx"
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM

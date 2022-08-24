@@ -1,7 +1,7 @@
-import { MailFilter } from "./mail-filter.jsx"
-import { MailList } from "./mail-list.jsx"
-import { MailDetails } from "./mail-details.jsx"
-import { MailCompose } from "./mail-compose.jsx"
+import { MailFilter } from "../cmps/mail-filter.jsx"
+import { MailList } from "../cmps/mail-list.jsx"
+import { MailDetails } from "../cmps/mail-details.jsx"
+import { MailCompose } from "../cmps/mail-compose.jsx"
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
