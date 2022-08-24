@@ -1,1 +1,26 @@
 /* MailList */
+
+.inbox-mails {
+    border-collapse: collapse;
+    flex-direction: column;
+    display: flex;
+    margin: 10px;
+    /* justify-content: space-around; */
+
+}
+
+.inbox-mail {
+    width: 100%;
+    border-bottom: .5px var(--hover) solid;
+}
+
+.inbox-mails tr:hover{
+transition: .5s;
+background-color: var(--main-bg-color);
+box-shadow: var(--box-shadow);
+}
+
+
+.inbox-mail-row .subject{
+    text-align: center;
+}

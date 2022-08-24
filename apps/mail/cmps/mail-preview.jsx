@@ -1,11 +1,11 @@
 
-export class MailPreview extends React.Component {
+const { Link } = ReactRouterDOM
 
-    render() {
-        return <div>
+export function MailPreview({email}) {
 
-            <h1>MailPreview</h1>
-        </div>
-
-    }
+    return <tr className="inbox-mail-row" key={email.id}>
+    <td  className="inbox-mail"><Link to={`/mail/${email.id}`}>{email.to}</Link> </td>
+                <td className="inbox-mail subject">{email.subject}</td>
+                <td className="inbox-mail">{email.sentAt}</td>
+            </tr>
 }
