@@ -1,33 +1,44 @@
-import { NoteAudio } from "./note-audio.jsx"
-import { NoteCanvas } from "./note-canvas.jsx"
-import { NoteImg } from "./note-img.jsx"
-import { NoteToDos } from "./note-todos.jsx"
-import { NoteTxt } from "./note-txt.jsx"
-import { NoteVideo } from "./note-video.jsx"
+import { NoteAudio } from "./cmp-dynamicCmp/note-audio.jsx"
+import { NoteCanvas } from "./cmp-dynamicCmp/note-canvas.jsx"
+import { NoteImg } from "./cmp-dynamicCmp/note-img.jsx"
+import { NoteToDos } from "./cmp-dynamicCmp/note-todos.jsx"
+import { NoteTxt } from "./cmp-dynamicCmp/note-txt.jsx"
+import { NoteVideo } from "./cmp-dynamicCmp/note-video.jsx"
 
 const { Link, Route, withRouter } = ReactRouterDOM
 
 export class NotePreview extends React.Component {
-   
-   
-   
-   
+    
+    state = {
+
+    }
+
+    DynamicCmp = (props) => {
+        const { note } = this.props
+        switch (note.type) {
+            case 'note-txt':
+                return <NoteTxt {...props} />
+            case 'note-img':
+                return <NoteImg {...props} />
+            case 'note-todos':
+                return <NoteToDos {...props} />
+            case 'note-video':
+                return <NoteVideo {...props} />
+            case 'note-audio':
+                return <NoteAudio {...props} />
+            case 'note-canvas':
+                return <NoteCanvas {...props} />
+        }
+    }
+
+
     render() {
+        const { DynamicCmp } = this
 
+        console.log('this.props', this.props)
+        if (!this.props.note) return <h1>not props</h1>
+        return <DynamicCmp />
 
-        
-        return <section>
-            <h2>Mail  </h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, quod? Suscipit magni beatae eos. Ad exercitationem totam cupiditate quaerat sunt dicta debitis repellat alias eius soluta laboriosam culpa ratione amet recusandae eligendi quos, sit veritatis dolores magni aliquid. Quos nemo debitis atque ut optio provident, cupiditate quasi? Non, libero. Qui totam similique atque deserunt dolorum, rem explicabo expedita libero eaque molestiae a, quaerat quas, accusantium est perferendis ipsa suscipit. Cumque, incidunt placeat! Eaque, nostrum consequuntur! Itaque eum ducimus numquam maiores. </p>
-   
-            <NoteVideo/>
-            <NoteTxt/>
-            <NoteToDos/>
-            <NoteImg/>
-            <NoteCanvas/>
-            <NoteAudio/>
-
-        </section>
 
     }
 }
