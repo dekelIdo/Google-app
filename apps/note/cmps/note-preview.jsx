@@ -8,36 +8,49 @@ import { NoteVideo } from "./cmp-dynamicCmp/note-video.jsx"
 const { Link, Route, withRouter } = ReactRouterDOM
 
 export class NotePreview extends React.Component {
-    
+
     state = {
 
     }
 
-    DynamicCmp = (props) => {
+    componentDidMount() {
+        this.setNote()
+    }
+    setNote=()=>{
         const { note } = this.props
-        switch (note.type) {
+        this.setState({note} )
+    }
+
+    DynamicCmp = (note) => {
+        const { type } = this.props.note
+        console.log(type);
+        switch (type) {
             case 'note-txt':
-                return <NoteTxt {...props} />
+                return <NoteTxt {...note} />
             case 'note-img':
-                return <NoteImg {...props} />
+                return <NoteImg {...note} />
             case 'note-todos':
-                return <NoteToDos {...props} />
+                return <NoteToDos {...note} />
             case 'note-video':
-                return <NoteVideo {...props} />
+                return <NoteVideo {...note} />
             case 'note-audio':
-                return <NoteAudio {...props} />
+                return <NoteAudio {...note} />
             case 'note-canvas':
-                return <NoteCanvas {...props} />
+                return <NoteCanvas {...note} />
         }
     }
 
 
     render() {
         const { DynamicCmp } = this
-
+        const { note } = this.props
         console.log('this.props', this.props)
         if (!this.props.note) return <h1>not props</h1>
-        return <DynamicCmp />
+        return <div className="note-container">
+
+            <DynamicCmp note={note} />
+
+        </div>
 
 
     }

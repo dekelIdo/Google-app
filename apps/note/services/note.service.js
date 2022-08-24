@@ -35,7 +35,7 @@ const gNotes = [
         id:  utilService.makeId(),
         type: "note-img",
         info: {
-            url: "http://some-img/me",
+            url: "https://ynet-images1.yit.co.il/picserver5/crop_images/2021/07/22/10840408/10840408_0_0_1000_668_0_x-large.jpg",
             title: "Bobi and Me"
         },
         style: {

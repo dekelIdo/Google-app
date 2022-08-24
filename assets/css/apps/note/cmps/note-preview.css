@@ -1,0 +1,10 @@
+.note-container{
+    background-color:var(--main-bg-color);
+    padding: 15px 5px 15px 10px;
+}
+
+.note-container:hover{
+    box-shadow: var(--box-shadow);
+
+    cursor: pointer;
+}

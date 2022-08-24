@@ -1,8 +1,6 @@
 
 
-export function NoteTxt (){
+export function NoteTxt (props){
     
-
-
-    return <h1>NoteTxt</h1>
+    return <h1>{props.note.info.txt}</h1>
 }
