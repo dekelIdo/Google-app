@@ -9,11 +9,22 @@ export class NoteApp extends React.Component {
 
 
     state = {
-        notes: []
+        notes: [],
+        note: {
+            name: '',
+            title: '',
+            text: '',
+            backgroundColor: '',
+        },
+
+        isOnfocus: false
     }
 
     componentDidMount() {
         this.loadNotes()
+    }
+    componentDidUpdate(prevProps, prevState) {
+        // if (prevState.state)
     }
     loadNotes = () => {
 
@@ -32,12 +43,13 @@ export class NoteApp extends React.Component {
         const { text, title } = this.state.note
         const { note } = this.state
         const type = target.getAttribute('name')
-        noteService.addNote(text, title, type).then(notes => { this.setState((prevState) => ({ ...prevState, note: { ...note, name: type } })), this.loadNotes() })
-
+        noteService.addNote(text, title, type).then(notes => { this.setState((prevState) => ( {...prevState , note: { ...note, name: type }}) ),this.loadNotes() })
+        
 
 
         console.log('this.state', this.state)
     }
+    
     onRemove = (noteId) => {
         noteService.removeNote(noteId).then(notes => {
             this.loadNotes()
@@ -54,19 +66,39 @@ export class NoteApp extends React.Component {
 
     }
 
->>>>>>> 3d65c60bfd05bec3f93cce1d24b2bdaeccaa6577
     render() {
-        console.log(this.state.notes);
         if (!this.state.notes) return <span></span>
-        const { notes } = this.state
-        return <Router>
-            <section className="note-app">
-                <NoteList loadNotes={this.loadNotes} notes={notes} />
-                {/* <NoteFilter /> */}
-                <Switch>
-                    <Route path="/note/:noteId" component={NoteEdit} />
-                </Switch>
-            </section>
-        </Router>
+        const { notes, text, isOnfocus } = this.state
+
+        return <section className="note-app">
+            <div className="note-inputs-container" onClick={isOnfocus ? this.toggleFocus : ""}>
+
+            </div>
+
+            {!isOnfocus && <form className="note-add" onSubmit={this.getOptions}>
+                <label htmlFor="note-google">   </label>
+                <input
+                    className="input-note"
+                    type="text"
+                    onClick={this.toggleFocus}
+                    placeholder="Add note"
+                    id="note-google"
+                    name="text"
+                    value={text}
+                    onChange={this.handleChange}
+
+                />
+
+                <span onClick={this.onAddNote} name="img" className="fa foto"></span>
+            </form>}
+            {isOnfocus && <InputArea handleChange={this.handleChange} onAddNote={this.onAddNote} state={this.state} />}
+
+
+
+            <NoteList onRemove={this.onRemove} notes={notes} />
+            {/* <NoteFilter /> */}
+
+        </section>
+
     }
 }
