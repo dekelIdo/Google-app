@@ -1,12 +1,4 @@
 
-td span{
-    padding: 4px;
-}
-
-td span:hover{
-    font-size: large;
-}
-
 
 .unread{
     font-weight: 600;
@@ -18,4 +10,43 @@ td span:hover{
 
 .isStar{
     color: gold;
+}
+
+.row{
+    display: flex;
+    flex:1;
+    padding: 16px;
+    align-items: center;
+    border-bottom: 1px solid var(--hover);
+
+}
+
+.col{
+    display: flex;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.large.col{
+    justify-content: space-between;
+    flex:8
+}
+
+.inbox-mail{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.email-body{
+    max-width: 200px;
+}
+
+.main-row :hover{
+    transition: .5s;
+    background-color: var(--main-bg-color);
+    box-shadow: var(--box-shadow);
 }

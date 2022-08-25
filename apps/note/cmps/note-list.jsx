@@ -4,7 +4,6 @@ import { noteService } from "../services/note.service.js"
 import { InputArea } from '../cmps/input-area.jsx'
 export class NoteList extends React.Component {
 
-
     state = {
         note: {
             title: '',
@@ -14,11 +13,13 @@ export class NoteList extends React.Component {
 
         isOnfocus: false
     }
+
     toggleFocus = (ev) => {
         const { isOnfocus } = this.state
         const focus = isOnfocus ? false : true
         this.setState({ isOnfocus: focus })
     }
+
     onAddNote = (ev) => {
         ev.preventDefault()
         const {text,title}=this.state.note

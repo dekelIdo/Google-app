@@ -4,8 +4,12 @@ import { MailDetails } from "../cmps/mail-details.jsx"
 import { MailCompose } from "../cmps/mail-compose.jsx"
 import { mailService } from "../services/mail.service.js"
 import { MailAside } from "../cmps/mail-aside.jsx"
-// import { MailTrash } from "../cmps/mail-trash.jsx"
 
+const ACTIONS = {
+    remove: 'remove',
+    read: 'read',
+    star: 'star'
+}
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch, Link } = ReactRouterDOM
 
@@ -14,40 +18,20 @@ export class MailApp extends React.Component {
         mails: [],
         criteria: {
             status: 'inbox',
-            txt: 'puki', 
-            isRead: true, 
-            isStared: true,  
+            txt: null,
+            isRead: true,
+            isStared: false,
         }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.criteria.status !== this.state.criteria.status) {
-            this.loadMails()
-        }
-    }
-    onClickDeleted = () => {
-        console.log('show me trash')
-        let { criteria } = this.state
-
-        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status: 'trash' } }), this.loadMails())
-
-    }
-    
-    onClickFavorite = () => {
-        console.log('show favorite')
-        let { criteria } = this.state
-        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, isStared: isStared? false : true } }), this.loadMails())
-
-    }
-
-    onClickInbox = () => {
-        let { criteria } = this.state
-
-        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status: 'inbox' } }), this.loadMails())
     }
 
     componentDidMount() {
         this.loadMails()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.criteria.status !== this.state.criteria.status || prevState.criteria.txt !== this.state.criteria.txt) {
+            this.loadMails()
+        }
     }
 
     loadMails = () => {
@@ -57,42 +41,54 @@ export class MailApp extends React.Component {
             .then(mails => this.setState({ mails }))
     }
 
-    onMarkStared =(mailId)=>{
-        const mails = mailService.MarkAsStared(mailId)
-
-        this.setState({mails:mails})
+    onRouteClick = (status) => {
+        let { criteria } = this.state
+        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status } }), this.loadMails())
     }
 
-    onMarkRead = (mailId) => {
-        const mails = mailService.markRead(mailId)
-        this.setState({ mails: mails })
+    onSetSearch = (val) => {
+        let { criteria } = this.state
+        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, txt: val } }), this.loadMails())
     }
-
 
     onRemoveMail = (mailId) => {
         mailService.removeMail(mailId)
-        let { mails } = this.state
-
-        mails = mails.filter(mail => mail.id !== mailId)
-
-        this.setState({ mails })
     }
 
+    onMarkStared = (mailId) => {
+        mailService.MarkAsStared(mailId)
+    }
+
+    onMarkRead = (mailId) => {
+        mailService.markRead(mailId)
+    }
+
+    onActionClick = (action, mailId) => {
+
+        if (action === ACTIONS.remove) {
+            this.onRemoveMail(mailId)
+        }
+        if (action === ACTIONS.read) {
+            this.onMarkRead(mailId)
+        }
+        if (action === ACTIONS.star) {
+            this.onMarkStared(mailId)
+        }
+        this.loadMails()
+    }
     render() {
-        const { mails } = this.state
-        const { onRemoveMail, onMarkRead, onClickDeleted,onMarkStared } = this
+        const { mails, criteria } = this.state
+        const { onActionClick, onRouteClick, onSetSearch } = this
 
         return <Router>
             <section className="mail-app">
-                <MailAside onClickDeleted={onClickDeleted} onClickInbox={this.onClickInbox} />
+                <MailAside onRouteClick={onRouteClick} />
                 {/* <MailCompose /> */}
-                <MailFilter />
-
+                <MailFilter criteria={criteria} onSetSearch={onSetSearch} />
                 <Switch>
                     <Route path="/mail/Compose" component={MailCompose} />
-                    {/* <Route path="/mail/trash" component={MailTrash} /> */}
                     <Route path="/mail/:mailId" component={MailDetails} />
-                    <MailList emails={mails} onRemoveMail={onRemoveMail} onMarkRead={onMarkRead} onMarkStared={onMarkStared} />
+                    <MailList emails={mails} onActionClick={onActionClick} />
                 </Switch>
 
             </section>

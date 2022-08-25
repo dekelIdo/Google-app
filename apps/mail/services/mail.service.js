@@ -29,38 +29,32 @@ function getInboxEmails(criteria) {
     }
 
     if (criteria) {
+        if (criteria.txt) {
+            emails = emails.filter(email => email.body.includes(criteria.txt) || email.to.includes(criteria.txt)
+                && criteria.status === 'inbox' && email.isDeleted === false)
+            return Promise.resolve(emails)
+        }
 
         if (criteria.status === 'trash') {
             emails = emails.filter(email => email.isDeleted === true)
-         console.log('trash',emails)
-         return Promise.resolve(emails)
-
+            return Promise.resolve(emails)
         }
-        
+
         if (criteria.status === 'inbox') {
-            emails = emails.filter(email => email.isDeleted === false)
-            console.log('inbose',emails)
-            return Promise.resolve(emails)
 
+            emails = emails.filter(email => email.isDeleted === false && email.status === 'inbox')
+            return Promise.resolve(emails)
         }
+
         if (criteria.status === 'sent') {
-            emails = emails.filter(email => email.isDeleted === false)
-            console.log('sent',emails)
+            emails = emails.filter(email => email.isDeleted === false && email.status === 'sent')
             return Promise.resolve(emails)
         }
 
-        if (criteria.txt) {
-            emails = emails.filter(email => email.body === criteria.txt)
+        if (criteria.status === 'stared') {
+            emails = emails.filter(email => email.isStared === true)
+            return Promise.resolve(emails)
         }
-
-        if (criteria.isRead) {
-            emails = emails.filter(email => email.isRead)
-        }
-
-        if (criteria.isStared) {
-            emails = emails.filter(email => email.isStared === criteria.isStared)
-        }
-
     }
     return Promise.resolve(emails)
 }
@@ -91,21 +85,27 @@ function removeMail(mailId) {
     let mails = _loadFromStorage()
     // mails = mails.filter(mail => mail.id !== mailId)
     const email = mails.find(email => email.id === mailId)
-    email.isDeleted = true
-    _saveToStorage(mails)
-    return mails
-}
+    console.log('email:', email)
 
+    if (email.isDeleted) {
+        console.log('meawo')
+        const filteredMails = mails.filter(mail => mail.id !== mailId)
+        _saveToStorage(filteredMails)
+    } else {
+        email.isDeleted = true
+        _saveToStorage(mails)
+    }
+}
 
 function markRead(emailId) {
     let emails = _loadFromStorage() || gEmails
 
     const email = emails.find(email => email.id === emailId)
 
-    email.isRead ? email.isRead = false: email.isRead = true
-
+    email.isRead = !email.isRead
+    // ? email.isRead = false : email.isRead = true
     _saveToStorage(emails)
-    return emails
+
 }
 
 function MarkAsStared(emailId) {
@@ -113,9 +113,9 @@ function MarkAsStared(emailId) {
 
     const email = emails.find(email => email.id === emailId)
 
-    email.isStared? email.isStared = false : email.isStared = true
+    email.isStared = !email.isStared
     _saveToStorage(emails)
-    return emails
+
 }
 
 function createNewMail(address, subject, body) {
@@ -124,8 +124,8 @@ function createNewMail(address, subject, body) {
     const mailToSend = {
         id: utilService.makeId(),
         status: 'sent',
-        subject: subject ? subject : 'nothing',
-        to: address ? address : 'subject',
+        subject: subject ? subject : 'write somthing',
+        to: address ? address : 'nowhere',
         sentAt: 1551133930594,
         isDeleted: false,
         isStared: false,

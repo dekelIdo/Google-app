@@ -5,8 +5,7 @@ export class MailDetails extends React.Component {
     state = {
         mail: null,
     }
-
-
+    
     componentDidMount() {
         this.loadMail()
     }

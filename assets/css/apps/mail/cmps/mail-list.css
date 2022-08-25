@@ -1,34 +1,19 @@
 /* MailList */
 
-.inbox-mails {
-    border-collapse: collapse;
-    flex-direction: column;
-    display: flex;
-    margin: 10px;
-    /* justify-content: space-around; */
 
+.icon{
+    padding: 6px;
 }
 
-.inbox-mail {
-    border-bottom: .5px var(--hover) solid;
-}
 
-.inbox-mail-underline {
-    border-bottom: .5px var(--hover) solid;
-}
-.inbox-mail-underline:hover{
-    border-radius: 50%;
-    background-color: var(--hover);
-}
-
-.inbox-mails tr:hover {
+ /* .inbox-mails.full :hover {
     transition: .5s;
     background-color: var(--main-bg-color);
     box-shadow: var(--box-shadow);
-}
-
-
-/* 
-tr {
-    
 } */
+
+.icon:hover{
+    border-radius: 50%;
+    background-color: var(--hover);
+    cursor: pointer;
+}
