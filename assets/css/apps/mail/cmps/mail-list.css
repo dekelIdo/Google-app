@@ -27,16 +27,8 @@
     box-shadow: var(--box-shadow);
 }
 
-.unread{
-    font-weight: 600;
-}
-
 
 /* 
 tr {
     
 } */
-
-.read tr{
-    font-weight: 100;
-}

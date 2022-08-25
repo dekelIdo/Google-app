@@ -6,3 +6,16 @@ td span{
 td span:hover{
     font-size: large;
 }
+
+
+.unread{
+    font-weight: 600;
+}
+
+.read tr{
+    font-weight: 100;
+}
+
+.isStar{
+    color: gold;
+}

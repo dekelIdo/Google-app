@@ -26,6 +26,9 @@
 .fa {
     font-family: fa;
 }
+.far {
+    font-family: faRe;
+}
 
 .fa.trash::before {
     content: '\f2ed';
@@ -36,7 +39,7 @@
 }
 
 .fa.inbox::before {
-    content: '\f310';
+    content: '\f01c';
 }
 
 .fa.image::before {
@@ -47,11 +50,11 @@
     content: '\f08d';
 }
 
-.fa.sent::before {
+.far.sent::before {
     content: '\f1d8';
 }
 
-.fa.star::before {
+.far.star::before {
     content: '\f005';
 }
 
@@ -77,4 +80,9 @@
 
 .fa.logo::before {
     content: '\f59e';
+}
+
+.active{
+    color: rgb(23, 19, 13);
+    text-decoration: overline;
 }

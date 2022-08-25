@@ -4,15 +4,46 @@ import { MailDetails } from "../cmps/mail-details.jsx"
 import { MailCompose } from "../cmps/mail-compose.jsx"
 import { mailService } from "../services/mail.service.js"
 import { MailAside } from "../cmps/mail-aside.jsx"
+// import { MailTrash } from "../cmps/mail-trash.jsx"
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch, Link } = ReactRouterDOM
 
 export class MailApp extends React.Component {
-
     state = {
         mails: [],
-        filterBy: null
+        criteria: {
+            status: 'inbox',
+            txt: 'puki', 
+            isRead: true, 
+            isStared: true,  
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.criteria.status !== this.state.criteria.status) {
+            this.loadMails()
+        }
+    }
+    onClickDeleted = () => {
+        console.log('show me trash')
+        let { criteria } = this.state
+
+        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status: 'trash' } }), this.loadMails())
+
+    }
+    
+    onClickFavorite = () => {
+        console.log('show favorite')
+        let { criteria } = this.state
+        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, isStared: isStared? false : true } }), this.loadMails())
+
+    }
+
+    onClickInbox = () => {
+        let { criteria } = this.state
+
+        this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status: 'inbox' } }), this.loadMails())
     }
 
     componentDidMount() {
@@ -20,19 +51,21 @@ export class MailApp extends React.Component {
     }
 
     loadMails = () => {
-        mailService.getInboxEmails(this.state)
+        const { criteria } = this.state
+
+        mailService.getInboxEmails(criteria)
             .then(mails => this.setState({ mails }))
     }
 
+    onMarkStared =(mailId)=>{
+        const mails = mailService.MarkAsStared(mailId)
+
+        this.setState({mails:mails})
+    }
 
     onMarkRead = (mailId) => {
-        const { mails } = this.state
-        mailService.findEmailById(mailId)
-            .then((mail) => {
-                if (!mail) return this.onGoBack()
-                mailService.markRead(mail), this.setState({ mails })
-            })
-
+        const mails = mailService.markRead(mailId)
+        this.setState({ mails: mails })
     }
 
 
@@ -47,18 +80,19 @@ export class MailApp extends React.Component {
 
     render() {
         const { mails } = this.state
-        const { onRemoveMail, onMarkRead } = this
+        const { onRemoveMail, onMarkRead, onClickDeleted,onMarkStared } = this
 
         return <Router>
             <section className="mail-app">
-                <MailAside />
+                <MailAside onClickDeleted={onClickDeleted} onClickInbox={this.onClickInbox} />
                 {/* <MailCompose /> */}
                 <MailFilter />
 
                 <Switch>
                     <Route path="/mail/Compose" component={MailCompose} />
+                    {/* <Route path="/mail/trash" component={MailTrash} /> */}
                     <Route path="/mail/:mailId" component={MailDetails} />
-                    <MailList emails={mails} onRemoveMail={onRemoveMail} onMarkRead={onMarkRead} />
+                    <MailList emails={mails} onRemoveMail={onRemoveMail} onMarkRead={onMarkRead} onMarkStared={onMarkStared} />
                 </Switch>
 
             </section>

@@ -1,3 +1,4 @@
+import { mailService } from "../services/mail.service.js"
 
 export class MailCompose extends React.Component {
     inputRef = React.createRef()
@@ -10,32 +11,30 @@ export class MailCompose extends React.Component {
     }
 
     handleChange = ({ target }) => {
-        const {compose} = this.state
+        const { compose } = this.state
         const field = target.name
         const value = target.value
 
         this.setState((prevState) => ({
-           compose: { ...prevState.compose, [field]: value }
+            compose: { ...prevState.compose, [field]: value }
         }))
-
     }
 
     onSendMail = () => {
+        const { fullName, subject, textBody } = this.state.compose
+
+
+        mailService.createNewMail(fullName, subject, textBody)
 
     }
-
-    // handleNameChange = ({ target: { value } }) => {
-    //     this.setState((prevState) => ({ ...prevState, name: value }))
-    // }
-
-
 
     render() {
         const { fullName, subject, textBody } = this.state
         // onSubmit={this.onSendMail}
         return <React.Fragment>
-            <form className="book-add"   >
-                <label htmlFor="send-mail">  to </label>
+            <form className="new-mail" onSubmit={this.onSendMail}  >
+                <div className="up-new-mail">new email</div>
+                <label htmlFor="send-mail"></label>
                 <input
                     ref={this.inputRef}
                     type="text"
@@ -46,7 +45,7 @@ export class MailCompose extends React.Component {
                     value={fullName}
                 />
 
-                <label htmlFor="subject">name:</label>
+                <label htmlFor="subject"></label>
                 <input
                     placeholder="subject"
                     type="text"
@@ -55,7 +54,7 @@ export class MailCompose extends React.Component {
                     value={subject}
                     onChange={this.handleChange}
                 />
-                <label htmlFor="textBody">name:</label>
+                <label htmlFor="textBody"></label>
                 <input
                     placeholder="your message...."
                     type="text"
@@ -64,7 +63,7 @@ export class MailCompose extends React.Component {
                     value={textBody}
                     onChange={this.handleChange}
                 />
-                <button>Send</button>
+                <button className="send-mail-btn">Send</button>
             </form>
         </React.Fragment>
     }

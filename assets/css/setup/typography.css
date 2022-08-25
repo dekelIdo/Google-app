@@ -3,6 +3,10 @@
     font-family: fa;
     src: url('/assets/fonts/fa-brands-400.ttf')
 }
+@font-face {
+    font-family: faRe;
+    src: url('/assets/fonts/fa-regular-400.ttf')
+}
 
 
 @font-face{
