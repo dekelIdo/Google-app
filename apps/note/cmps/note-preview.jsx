@@ -41,12 +41,13 @@ export class NotePreview extends React.Component {
 
 
     render() {
+        
         const { DynamicCmp } = this
         const { note } = this.props
         if (!this.props.note) return <h1>not props</h1>
         return <React.Fragment>
             <div className="note-container">
-        
+                <span onClick={this.props.onRemove} className="fa close"></span>
 
                 <DynamicCmp note={note} />
 

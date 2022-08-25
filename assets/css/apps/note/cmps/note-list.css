@@ -1,11 +1,15 @@
 .notes-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fit, minmax(140px, 200px)); */
     gap: 15px;
     min-height: 90px;
     margin: auto;
     justify-content: center;
     column-count: 3;
+    column-width: 238px;
+    column-gap:10px;
+    max-width: 800px;
+    font-size: 1.5rem;
 }
 
 .note-add {
@@ -28,10 +32,12 @@
     border-radius: 5px;
     border: none;
 }
-.note-add span{
-    margin-inline-end: 10px ;
+
+.note-add span {
+    margin-inline-end: 10px;
     cursor: pointer;
 }
+
 .input-note {
     flex-grow: 2;
     border: none;
@@ -59,10 +65,8 @@
     flex-direction: column;
     margin: auto;
     max-width: 400px;
-    /* This bit draws the box around it */
     margin-top: 10px;
     margin-bottom: 15px;
-    /* I've used padding so you can see the edges of the elements. */
     box-shadow: 2px 2px 2px 2px rgb(163, 161, 161);
     padding: 5px;
     border-radius: 5px;
@@ -79,7 +83,7 @@
 
 .container-input-btn>*:not(:last-child) {
     margin-inline-end: 10px;
-    
+
 
 }
 
@@ -95,11 +99,13 @@
     transition: 0.2s;
 
 }
-.note-inputs-container{
+
+.note-inputs-container {
     width: 100%;
     background-color: bisque;
     height: 120px;
     position: fixed;
     opacity: 0;
     z-index: -1;
+
 }

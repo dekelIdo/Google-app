@@ -90,3 +90,19 @@
     content: '\f14a';
 }
 
+.fa.video::before {
+    content: '\f03d';
+}
+.fa.add-note::before {
+    content: '\f481';
+}
+
+.fa.close::before {
+    content: '\f057';
+}
+
+
+.fa.color::before {
+    content: '\f53f';
+}
+
