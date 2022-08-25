@@ -16,14 +16,13 @@ export class NotePreview extends React.Component {
     componentDidMount() {
         this.setNote()
     }
-    setNote=()=>{
+    setNote = () => {
         const { note } = this.props
-        this.setState({note} )
+        this.setState({ note })
     }
 
     DynamicCmp = (note) => {
         const { type } = this.props.note
-        console.log(type);
         switch (type) {
             case 'note-txt':
                 return <NoteTxt {...note} />
@@ -44,13 +43,15 @@ export class NotePreview extends React.Component {
     render() {
         const { DynamicCmp } = this
         const { note } = this.props
-        console.log('this.props', this.props)
         if (!this.props.note) return <h1>not props</h1>
-        return <div className="note-container">
+        return <React.Fragment>
+            <div className="note-container">
+        
 
-            <DynamicCmp note={note} />
+                <DynamicCmp note={note} />
 
-        </div>
+            </div>
+        </React.Fragment>
 
 
     }

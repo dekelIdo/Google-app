@@ -5,7 +5,25 @@ const KEY="notesDB"
 
 export const noteService = {
     query,
+    creatNote,
 }
+function creatNote(newTxt){
+    return {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: false,
+        info: {
+            txt: newTxt
+        },
+        style: {
+            backgroundColor: "#00d",
+            
+        }
+    }
+
+}
+
+
 
 function query() {
 
@@ -52,6 +70,18 @@ const gNotes = [
                 { txt: "Coding power", doneAt: 187111111 }
             ]
         }
-    }
+    },
+    {
+        id:  utilService.makeId(),
+        type: "note-video",
+        info: {
+            url: "https://www.youtube.com/watch?v=4Dzhgr8xBpI&ab_channel=DEKEL",
+            title: "my party"
+        },
+        style: {
+            backgroundColor: "#00d",
+            
+        }
+    },
 ];
 

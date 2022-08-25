@@ -1,10 +1,32 @@
-.note-container{
-    background-color:var(--main-bg-color);
-    padding: 15px 5px 15px 10px;
+.note-container {
+    background-color: var(--main-bg-color);
+    /* padding: 15px 5px 15px 10px; */
+    border-radius: 10px;
+    position: relative;
 }
 
-.note-container:hover{
+.note-container:hover {
     box-shadow: var(--box-shadow);
-
     cursor: pointer;
+}
+
+.note-container img {
+
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    display: block;
+    position: relative;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    border-radius: 10px;
+    object-fit: fill;
+}
+
+.note-container>*:not(.img) {
+    padding: 10px;
 }

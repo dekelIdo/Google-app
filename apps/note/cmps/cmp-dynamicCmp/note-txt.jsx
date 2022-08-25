@@ -2,5 +2,5 @@
 
 export function NoteTxt (props){
     
-    return <h1>{props.note.info.txt}</h1>
+    return <div className="note-container">{props.note.info.txt}</div>
 }

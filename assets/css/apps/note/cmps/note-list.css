@@ -1,8 +1,42 @@
 .notes-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    column-count: 3;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
     gap: 15px;
     min-height: 90px;
     margin: auto;
+    justify-content: center;
+    column-count: 3;
 }
+.note-add{
+    text-align: center;
+}
+
+.notes-list img.xxxxxs {
+    grid-row: span 1;
+}
+
+.notes-list img.xxxxs {
+    grid-row: span 2;
+}
+
+.notes-list img.xxxs {
+    grid-row: span 3;
+}
+
+.notes-list img.xxs {
+    grid-row: span 4;
+}
+
+.notes-list img.xs {
+    grid-row: span 5;
+}
+
+.notes-list img.s {
+    grid-row: span 6;
+}
+
+.notes-list img.m {
+    grid-row: span 7;
+}
+
+
