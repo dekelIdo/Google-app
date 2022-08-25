@@ -6,31 +6,53 @@ const KEY = "notesDB"
 export const noteService = {
     query,
     addNote,
+    removeNote,
 }
 
 
+function removeNote(noteId) {
+    let notes = _loadNotesFromStorage() || gNotes
+    const newNotes = notes.filter(note => note.id !== noteId)
+    _saveNotesToStorage(newNotes)
+    return Promise.resolve(newNotes)
+}
 
-function addNote(newTxt,newTitle) {
-    let notes = _loadFromStorage() || gNotes
-    const newNote = _creatNote(newTxt,newTitle)
+function addNote(newTxt, newTitle, type) {
+    let notes = _loadNotesFromStorage() || gNotes
+
+    const newNote = _creatNote(newTxt, newTitle,type)
     notes.unshift(newNote)
-    _saveBooksToStorage(notes)
+    _saveNotesToStorage(notes)
     console.log(notes);
     return Promise.resolve(notes)
 }
-function _creatNote(newTxt,newTitle, backgroundColor) {
+function _creatNote(newTxt, newTitle, type, backgroundColor) {
+    if (type === 'todos') {
+        return {
+            id: utilService.makeId(),
+            type: "note-todos",
+            info: {
+                label: newTitle,
+                todos: [
+                    { txt: newTxt  },
+               
+                ]
+            }
+        }
+    }
+    if (type === 'note') {
+        return {
+            id: utilService.makeId(),
+            type: "note-txt",
+            isPinned: false,
+            info: {
+                title: newTitle,
+                txt: newTxt
+            },
+            style: {
+                backgroundColor: "#00d",
 
-    return {
-        id: utilService.makeId(),
-        type: "note-txt",
-        isPinned: false,
-        info: {
-            title:newTitle,
-            txt: newTxt
-        },
-        style: {
-            backgroundColor: "#00d",
-
+            }
         }
     }
 
@@ -40,16 +62,16 @@ function _creatNote(newTxt,newTitle, backgroundColor) {
 
 function query() {
 
-    let notes = _loadFromStorage() || gNotes
+    let notes = _loadNotesFromStorage() || gNotes
 
     return Promise.resolve(notes)
 }
 
-function _saveBooksToStorage(notes) {
+function _saveNotesToStorage(notes) {
     storageService.saveToStorage(KEY, notes)
 }
 
-function _loadFromStorage() {
+function _loadNotesFromStorage() {
     return storageService.loadFromStorage(KEY)
 }
 
@@ -88,7 +110,7 @@ const gNotes = [
         id: utilService.makeId(),
         type: "note-video",
         info: {
-            url: "https://www.youtube.com/watch?v=7fpgxSJQSio&list=RD7fpgxSJQSio&start_radio=1&ab_channel=YuvalDayan",
+            url: "https://www.youtube.com/watch?v=2dSgVXqZ4xk&ab_channel=RelaxCafeMusic",
             title: "my party"
         },
         style: {

@@ -3,10 +3,10 @@
 
 export function NoteImg (props){
 
-    return <div >
+    return <div style={{backgroundImage: `url(${props.note.info.url})` }} className="note-container image-container" >
       
         
-        {<img src={`${props.note.info.url}`}/>}
     
     </div>
 }
+{/* {<img src={``}/>} */}

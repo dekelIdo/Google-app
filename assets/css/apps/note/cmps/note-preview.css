@@ -3,6 +3,9 @@
     /* padding: 15px 5px 15px 10px; */
     border-radius: 10px;
     position: relative;
+    margin-bottom: 10px;
+    break-inside: avoid;
+
 }
 
 .note-container:hover {
@@ -20,13 +23,19 @@
     max-height: none;
     display: block;
     position: relative;
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
     border-radius: 10px;
     object-fit: fill;
 }
 
 .note-container>*:not(.img) {
     padding: 10px;
+}
+
+
+.close {
+    opacity: 1;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    z-index: 5;
 }
