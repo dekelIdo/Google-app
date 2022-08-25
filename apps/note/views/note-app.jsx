@@ -49,6 +49,7 @@ export class NoteApp extends React.Component {
 
         console.log('this.state', this.state)
     }
+    
     onRemove = (noteId) => {
         noteService.removeNote(noteId).then(notes => {
             this.loadNotes()
