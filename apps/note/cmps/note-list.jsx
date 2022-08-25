@@ -1,30 +1,30 @@
 import { NotePreview } from "../cmps/note-preview.jsx"
 import { NoteAdd } from '../cmps/note-add.jsx'
-
-
+import { noteService } from "../services/note.service.js"
+import { InputArea } from '../cmps/input-area.jsx'
 export class NoteList extends React.Component {
 
 
     state = {
         note: {
+            title: '',
             text: '',
             backgroundColor: '',
-
         },
 
         isOnfocus: false
     }
-    toogleFocus = (ev) => {
+    toggleFocus = (ev) => {
         const { isOnfocus } = this.state
         const focus = isOnfocus ? false : true
         this.setState({ isOnfocus: focus })
     }
     onAddNote = (ev) => {
         ev.preventDefault()
-        carService.save(this.state.car)
-            .then(() => {
-                this.props.history.push('/car')
-            })
+        const {text,title}=this.state.note
+       console.log( ev.target.name);
+        noteService.addNote(text,title).then(notes => { notes })
+        this.props.loadNotes()
     }
 
     handleChange = ({ target }) => {
@@ -33,26 +33,36 @@ export class NoteList extends React.Component {
         this.setState(({ note }) => ({
             note: { ...note, [field]: value }
         }))
+
     }
 
     render() {
         const { notes } = this.props
         const { text } = this.state
         console.log(this.state);
+        const { isOnfocus } = this.state
+
         return <React.Fragment>
-            <form className="note-add" onSubmit={this.getOptions}>
+            <div className="note-inputs-container" onClick={isOnfocus ? this.toggleFocus : ""}>
+                
+            </div>
+
+            {!isOnfocus && <form className="note-add" onSubmit={this.getOptions}>
                 <label htmlFor="note-google">   </label>
                 <input
+                    className="input-note"
                     type="text"
-                    onClick={this.toogleFocus}
+                    onClick={this.toggleFocus}
                     placeholder="Add note"
                     id="note-google"
                     name="text"
                     value={text}
                     onChange={this.handleChange}
                 />
-                <button onClick={this.handleChange}>Search</button>
-            </form>
+            
+            <span onClick={this.onAddNote} name="img" className="fa foto"></span>
+            </form>}
+            {isOnfocus && <InputArea handleChange={this.handleChange} onAddNote={this.onAddNote} state={this.state} />}
 
 
 
@@ -68,6 +78,8 @@ export class NoteList extends React.Component {
                 })}
 
             </div>
+
+
         </React.Fragment>
     }
 
