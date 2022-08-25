@@ -22,6 +22,7 @@ export class NoteApp extends React.Component {
     }
 
 
+
     render() {
         console.log(this.state.notes);
         if (!this.state.notes) return <span></span>
@@ -30,7 +31,7 @@ export class NoteApp extends React.Component {
             <section className="note-app">
                 
                 
-                <NoteList notes={notes} />
+                <NoteList loadNotes={this.loadNotes }  notes={notes} />
                 {/* <NoteFilter /> */}
 
                 <Switch>

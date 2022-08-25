@@ -82,7 +82,11 @@
     content: '\f59e';
 }
 
-.active{
-    color: rgb(23, 19, 13);
-    text-decoration: overline;
+
+.fa.foto::before {
+    content: '\f03e';
 }
+.fa.cheakbok::before {
+    content: '\f14a';
+}
+
