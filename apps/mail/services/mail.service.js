@@ -6,11 +6,15 @@ export const mailService = {
     // query,
     getInboxEmails,
     findEmailById,
+    removeMail,
+    getUserLogIn,
+    markRead,
 }
+
 const loggedInUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
-   }
+}
 
 const KEY = 'emailsDB'
 
@@ -21,12 +25,22 @@ function getInboxEmails(filterBy) {
         _saveToStorage(emails)
     }
 
-
-
-
     return Promise.resolve(emails)
 }
 
+function removeMail(mailId) {
+    let mails = _loadFromStorage()
+    mails = mails.filter(mail => mail.id !== mailId)
+    _saveToStorage(mails)
+    return mails
+}
+
+// not in use
+function getInboxEmailsSimple() {
+    let emails = _loadFromStorage() || gEmails
+    return emails
+
+}
 
 
 function findEmailById(emailId) {
@@ -34,6 +48,14 @@ function findEmailById(emailId) {
     const emails = _loadFromStorage() || gEmails
     const currEmail = emails.find(email => email.id === emailId)
     return Promise.resolve(currEmail)
+}
+
+function markRead(email){
+let emails = _loadFromStorage() || gEmails
+ email.isRead = true 
+ console.log('mail',email)
+_saveToStorage(emails)
+console.log('mlssssss',emails)
 }
 
 
@@ -48,17 +70,7 @@ function _createEmail() {
     }
 }
 
-function _createEmails() {
-    const emails = []
-    for (let i = 0; i < 5; i++) {
-
-        emails.push(_createEmail())
-    }
-    return emails
-}
-
-
-function getUserLogIn(){
+function getUserLogIn() {
     return loggedInUser
 }
 
@@ -95,3 +107,12 @@ const gEmails = [
         to: 'momo@momo.com'
     }
 ]
+
+function _createEmails() {
+    const emails = []
+    for (let i = 0; i < 5; i++) {
+
+        emails.push(_createEmail())
+    }
+    return emails
+}

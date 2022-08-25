@@ -1,0 +1,8 @@
+
+td span{
+    padding: 4px;
+}
+
+td span:hover{
+    font-size: large;
+}

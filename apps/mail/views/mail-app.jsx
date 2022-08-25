@@ -3,15 +3,16 @@ import { MailList } from "../cmps/mail-list.jsx"
 import { MailDetails } from "../cmps/mail-details.jsx"
 import { MailCompose } from "../cmps/mail-compose.jsx"
 import { mailService } from "../services/mail.service.js"
+import { MailAside } from "../cmps/mail-aside.jsx"
 
 const Router = ReactRouterDOM.HashRouter
-const { Route, Switch } = ReactRouterDOM
+const { Route, Switch, Link } = ReactRouterDOM
 
 export class MailApp extends React.Component {
 
     state = {
-        emails: []
-        
+        mails: [],
+        filterBy: null
     }
 
     componentDidMount() {
@@ -20,27 +21,46 @@ export class MailApp extends React.Component {
 
     loadMails = () => {
         mailService.getInboxEmails(this.state)
-            .then(emails => this.setState({ emails }))
+            .then(mails => this.setState({ mails }))
     }
 
 
+    onMarkRead = (mailId) => {
+        const { mails } = this.state
+        mailService.findEmailById(mailId)
+            .then((mail) => {
+                if (!mail) return this.onGoBack()
+                mailService.markRead(mail), this.setState({ mails })
+            })
+
+    }
+
+
+    onRemoveMail = (mailId) => {
+        mailService.removeMail(mailId)
+        let { mails } = this.state
+
+        mails = mails.filter(mail => mail.id !== mailId)
+
+        this.setState({ mails })
+    }
+
     render() {
-        const { emails } = this.state
+        const { mails } = this.state
+        const { onRemoveMail, onMarkRead } = this
 
         return <Router>
             <section className="mail-app">
-
-                <MailCompose />
-
+                <MailAside />
+                {/* <MailCompose /> */}
                 <MailFilter />
-                
-                <Switch>
-                <MailList emails={emails} />
-                </Switch>
 
                 <Switch>
+                    <Route path="/mail/Compose" component={MailCompose} />
                     <Route path="/mail/:mailId" component={MailDetails} />
+                    <MailList emails={mails} onRemoveMail={onRemoveMail} onMarkRead={onMarkRead} />
                 </Switch>
+
             </section>
         </Router>
     }

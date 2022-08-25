@@ -1,24 +1,20 @@
 import { MailPreview } from "./mail-preview.jsx"
+import { mailService } from "../services/mail.service.js"
 
 export class MailList extends React.Component {
-
-    state = {
-
-    }
 
 
 
     render() {
-
-        const { emails } = this.props
+        
+        const { emails, onRemoveMail,onMarkRead } = this.props
 
         return <table className="inbox-mails">
-            <tbody>
+            <tbody style={{width:"100%"}}>
                 {emails.map(email => {
-                    return <MailPreview key ={email.id} email = {email} /> 
+                    return <MailPreview key ={email.id} email = {email} onRemoveMail={onRemoveMail} onMarkRead={onMarkRead}/> 
                     })}
-            </tbody>
-
+          </tbody>
         </table>
 
     }

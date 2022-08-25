@@ -38,6 +38,7 @@
 .fa.inbox::before {
     content: '\f310';
 }
+
 .fa.image::before {
     content: '\f03e';
 }
@@ -47,7 +48,7 @@
 }
 
 .fa.sent::before {
-    content: '\e20a';
+    content: '\f1d8';
 }
 
 .fa.star::before {
@@ -77,4 +78,3 @@
 .fa.logo::before {
     content: '\f59e';
 }
-
