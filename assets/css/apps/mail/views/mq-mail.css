@@ -1,0 +1,51 @@
+@media (max-width: 1050px) {
+    .mail-aside {
+        position: fixed;
+        flex-direction: column;
+        top: 9%;
+        right: 0;
+        background-color: var(--clr1);
+        max-height: 100vh;
+        text-align: center;
+        justify-content: center;
+        width: 97.4%;
+        transform: translateX(100%);
+    }
+
+    .main-email-search {
+        width: 95vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .email-body {
+        display: none;
+    }
+
+    .email-list-subject {
+        max-width: 100px;
+    }
+
+}
+
+@media (max-width: 690px) {
+
+    .icon-list-send {
+        display: none !important;
+    }
+
+    .check-box-list {
+        display: none;
+    }
+
+    .mail-date-list {
+        display: none;
+    }
+
+    .large {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}

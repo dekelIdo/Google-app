@@ -1,13 +1,15 @@
 .mail-aside {
     max-width: 30vw;
+    position: relative;
+    float: right;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    float: right;
     background-color: var(--background);
 }
 
 .mail-aside ul {
+    margin-top: 0;
     padding: 5px;
     text-decoration: none;
     list-style: none;
@@ -15,4 +17,42 @@
 
 .mail-aside ul li {
     margin-bottom: 5px;
+    width: 100%;
 }
+
+.new-mail-btn {
+    background-color: #c2e7ff;
+    height: 46px;
+    min-width: 38px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.new-mail-btn:hover {
+    box-shadow: var(--box-shadow);
+
+}
+
+.nav-link-aside {
+    font-size: large;
+    padding: 5px;
+    width: 100%;
+}
+
+.nav-link-aside >*{
+    padding: 3px;
+}
+
+.nav-link-aside:hover {
+    background-color: var(--hover2);
+    box-shadow: var(--box-shadow);
+    border-radius: 16px;
+    border: 1px solid var(--box-shadow);
+}
+
+.inbox-nav-link{
+    background-color: var(--hover);
+}
+

@@ -4,11 +4,15 @@ import { MailDetails } from "../cmps/mail-details.jsx"
 import { MailCompose } from "../cmps/mail-compose.jsx"
 import { mailService } from "../services/mail.service.js"
 import { MailAside } from "../cmps/mail-aside.jsx"
+import { UserMsg } from "../../../cmps/user-msg.jsx"
+import {showSuccessMsg } from "../../../services/event-bus.service.js"
+
 
 const ACTIONS = {
     remove: 'remove',
     read: 'read',
-    star: 'star'
+    star: 'star',
+    draft: 'draft'
 }
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch, Link } = ReactRouterDOM
@@ -21,7 +25,8 @@ export class MailApp extends React.Component {
             txt: null,
             isRead: true,
             isStared: false,
-        }
+        },
+        newMail: false,
     }
 
     componentDidMount() {
@@ -40,7 +45,7 @@ export class MailApp extends React.Component {
         mailService.getInboxEmails(criteria)
             .then(mails => this.setState({ mails }))
     }
-
+    
     onRouteClick = (status) => {
         let { criteria } = this.state
         this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status } }), this.loadMails())
@@ -53,6 +58,7 @@ export class MailApp extends React.Component {
 
     onRemoveMail = (mailId) => {
         mailService.removeMail(mailId)
+        showSuccessMsg('mail removed')
     }
 
     onMarkStared = (mailId) => {
@@ -61,6 +67,11 @@ export class MailApp extends React.Component {
 
     onMarkRead = (mailId) => {
         mailService.markRead(mailId)
+    }
+
+    onMarkDraft =(mailId) =>{
+        mailService.markDraft(mailId)
+        showSuccessMsg('save as draft')
     }
 
     onActionClick = (action, mailId) => {
@@ -74,20 +85,32 @@ export class MailApp extends React.Component {
         if (action === ACTIONS.star) {
             this.onMarkStared(mailId)
         }
+        if (action===ACTIONS.draft){
+            this.onMarkDraft(mailId)
+        }
         this.loadMails()
     }
+
+    onNewMail = () => {
+        this.setState({ newMail: !this.state.newMail })
+    }
+
     render() {
-        const { mails, criteria } = this.state
-        const { onActionClick, onRouteClick, onSetSearch } = this
+        const { mails, criteria,newMail } = this.state
+        const { onActionClick, onRouteClick, onSetSearch,onNewMail } = this
 
         return <Router>
             <section className="mail-app">
-                <MailAside onRouteClick={onRouteClick} />
-                {/* <MailCompose /> */}
+                <UserMsg/>
+                <MailAside onRouteClick={onRouteClick} onNewMail={onNewMail} />
+                { newMail&& <MailCompose onNewMail={onNewMail} />}
                 <MailFilter criteria={criteria} onSetSearch={onSetSearch} />
                 <Switch>
+
+                    {/* element={<Dashboard authed={true} */}
                     <Route path="/mail/Compose" component={MailCompose} />
-                    <Route path="/mail/:mailId" component={MailDetails} />
+                    <Route path="/mail/:mailId" component={MailDetails} onActionClick={onActionClick}/>
+
                     <MailList emails={mails} onActionClick={onActionClick} />
                 </Switch>
 
@@ -95,3 +118,7 @@ export class MailApp extends React.Component {
         </Router>
     }
 }
+{/* <Route
+  path="/dashboard"
+  render={(props) => <Dashboard {...props} d />}
+/> */}

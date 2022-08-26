@@ -1,4 +1,5 @@
 import { mailService } from "../services/mail.service.js"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export class MailCompose extends React.Component {
     inputRef = React.createRef()
@@ -22,18 +23,23 @@ export class MailCompose extends React.Component {
 
     onSendMail = () => {
         const { fullName, subject, textBody } = this.state.compose
-
-
         mailService.createNewMail(fullName, subject, textBody)
+        showSuccessMsg('mail sent successfully')
+        this.onGoBack()
+    }
 
+    onGoBack = () => {
+        console.log('histoo', this.props.history)
+        // this.props.history.push('/mail')
     }
 
     render() {
         const { fullName, subject, textBody } = this.state
-        // onSubmit={this.onSendMail}
+        const { onNewMail } = this.props
+
         return <React.Fragment>
             <form className="new-mail" onSubmit={this.onSendMail}  >
-                <div className="up-new-mail">new email</div>
+                <div className="up-new-mail"><span className="new-message-headline">new email</span><span onClick={() => onNewMail()} className="fa close-box icon"></span></div>
                 <label htmlFor="send-mail"></label>
                 <input
                     ref={this.inputRef}
@@ -63,7 +69,14 @@ export class MailCompose extends React.Component {
                     value={textBody}
                     onChange={this.handleChange}
                 />
-                <button className="send-mail-btn">Send</button>
+                <div className="flex footer-mail-compose">
+                    <div>
+                        <button className="send-mail-btn">Send</button>
+                        <span className="far sent icon"></span>
+                    </div>
+
+                    <span className="far trash icon"></span>
+                </div>
             </form>
         </React.Fragment>
     }

@@ -12,6 +12,10 @@
     color: gold;
 }
 
+.isStar>*{
+    background-color: gold;
+}
+
 .row{
     display: flex;
     flex:1;
@@ -30,23 +34,41 @@
 }
 
 .large.col{
+    min-width: 50px;
     justify-content: space-between;
+    right: 0;
     flex:8
 }
 
 .inbox-mail{
+    padding-inline-end: 10px;
+}
+
+.email-list-address{
+    min-width: 170px;
+    padding-inline-end: 5px;
+}
+.email-list-subject{
     overflow: hidden;
     text-overflow: ellipsis;
+    
     white-space: nowrap;
-
+    min-width: 240px;
 }
 
 .email-body{
-    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 200px
 }
+
+/* .email-body{
+    max-width: 200px;
+} */
 
 .main-row :hover{
     transition: .5s;
-    background-color: var(--main-bg-color);
+    background-color: var(--hover2);
     box-shadow: var(--box-shadow);
 }
