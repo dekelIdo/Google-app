@@ -3,7 +3,7 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <h3 className="fa logo"></h3>
+             <img className="logo" src="../img/google.png"/>
         </Link>
         <nav>
             <NavLink exact to="/">Home</NavLink>

@@ -3,3 +3,6 @@
     right: 3px;
     color:black;
 }
+.done-todo{
+    text-decoration: line-through;
+}

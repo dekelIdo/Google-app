@@ -7,6 +7,8 @@ export const noteService = {
     query,
     addNote,
     removeNote,
+    getNoteById,
+    setNoteDone,
 }
 
 
@@ -17,26 +19,48 @@ function removeNote(noteId) {
     return Promise.resolve(newNotes)
 }
 
-function addNote(newTxt, newTitle, type) {
+function addNote(newTxt, newTitle, type, backgroundColor,image) {
+    if (!newTxt || !newTitle) return  alert('enter text')
     let notes = _loadNotesFromStorage() || gNotes
-
-    const newNote = _creatNote(newTxt, newTitle,type)
+    const newNote = _creatNote(newTxt, newTitle, type, backgroundColor,image)
     notes.unshift(newNote)
     _saveNotesToStorage(notes)
     console.log(notes);
     return Promise.resolve(notes)
 }
-function _creatNote(newTxt, newTitle, type, backgroundColor) {
+function setNoteDone(noteId, todoId) {
+    let notes = _loadNotesFromStorage() || gNotes
+    const currNote = notes.find(note => note.id === noteId)
+    console.log('currNote', currNote);
+    console.log('UserTodo', todoId);
+    const cuurTodo = currNote.info.todos.find(todo => todo.id === todoId)
+    console.log('cuurTodo', cuurTodo);
+    cuurTodo.done = !cuurTodo.done
+    _saveNotesToStorage(notes)
+    return Promise.resolve(notes)
+
+}
+
+function getNoteById(noteId) {
+    let notes = _loadNotesFromStorage() || gNotes
+    const currNote = notes.find(note => note.id === noteId)
+    return currNote
+
+}
+function _creatNote(newTxt, newTitle, type, backgroundColor ="#FFFFFF",image) {
+
     if (type === 'todos') {
         return {
             id: utilService.makeId(),
             type: "note-todos",
             info: {
                 label: newTitle,
-                todos: [
-                    { txt: newTxt  },
-               
-                ]
+                todos: _splitTodos(newTxt)
+
+            },
+            style: {
+                backgroundColor: backgroundColor,
+
             }
         }
     }
@@ -50,14 +74,32 @@ function _creatNote(newTxt, newTitle, type, backgroundColor) {
                 txt: newTxt
             },
             style: {
-                backgroundColor: "#00d",
+                backgroundColor: backgroundColor,
 
+            }
+        }
+    }
+    if (type === 'note-img'){
+        return{
+            id: utilService.makeId(),
+            type: "note-img",
+            info: {
+                url: `${image}`,
+                title: newTitle
+            },
+            style: {
+                backgroundColor: backgroundColor,
             }
         }
     }
 
 }
 
+function _splitTodos(newTxt) {
+    const splitedTxt = newTxt.split(',')
+    const todoArr = splitedTxt.map(todo => { return { txt: `${todo}`, done: false, id: utilService.makeId() } })
+    return todoArr
+}
 
 
 function query() {
@@ -82,6 +124,10 @@ const gNotes = [
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby!"
+        },
+        style: {
+            backgroundColor: "#FFFFFF",
+
         }
     },
     {
@@ -92,7 +138,7 @@ const gNotes = [
             title: "Bobi and Me"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#FFFFFF"
         }
     },
     {
@@ -101,9 +147,13 @@ const gNotes = [
         info: {
             label: "Get my stuff together",
             todos: [
-                { txt: "Driving liscence", doneAt: null },
-                { txt: "Coding power", doneAt: 187111111 }
+                { txt: "Driving liscence", done: false },
+                { txt: "Coding power", done: false }
             ]
+        },
+        style: {
+            backgroundColor: "#FFFFFF",
+
         }
     },
     {
@@ -114,7 +164,7 @@ const gNotes = [
             title: "my party"
         },
         style: {
-            backgroundColor: "#00d",
+            backgroundColor: "#FFFFFF",
 
         }
     },

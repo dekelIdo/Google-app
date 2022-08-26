@@ -3,7 +3,7 @@ export function NoteVideo(props) {
     const src = url
     const currUrlId= splitUrl(url)
     
-    return <iframe className="video-note" width="180" height="150"
+    return <iframe className="video-note" width="240" height="150"
     src={`https://www.youtube.com/embed/${currUrlId}`}>
     </iframe>
 

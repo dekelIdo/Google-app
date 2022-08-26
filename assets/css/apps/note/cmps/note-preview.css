@@ -1,10 +1,11 @@
 .note-container {
-    background-color: var(--main-bg-color);
+    background-color: white;
     /* padding: 15px 5px 15px 10px; */
     border-radius: 10px;
     position: relative;
     margin-bottom: 10px;
     break-inside: avoid;
+    border:  000001px solid rgb(210, 210, 210);
 
 }
 
