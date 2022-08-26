@@ -47,5 +47,10 @@
         flex-direction: column;
     }
 
+    .new-mail {
+        top: 10px;
+        width: 95vw;
+        height: 95vh;
+    }
 
 }

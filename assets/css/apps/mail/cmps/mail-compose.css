@@ -12,7 +12,7 @@
     box-shadow: inset 1.5px 1.5px 0 rgb(#ecf3fe / 12%), inset 0 -1.5px 0 rgb(#ecf3fe / 9%);
     margin-left: 5px;
     float: left;
-    bottom: 20px;
+    bottom: 50px;
     transition: 2s;
     position: fixed;
 }

@@ -125,10 +125,10 @@ function createNewMail(address, subject, body) {
         status: 'sent',
         subject: subject ? subject : 'write somthing',
         to: address ? address : 'nowhere',
-        sentAt: 1551133930594,
+        sentAt:  new Date(),
         isDeleted: false,
         isStared: false,
-        isRead: false,
+        isRead: true,
         isDraft: false,
         body: body ? body : 'body message',
     }

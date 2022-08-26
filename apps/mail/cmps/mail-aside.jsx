@@ -7,7 +7,7 @@ function _MailAside(props) {
     const { onRouteClick, onNewMail } = props
 
     return <section className="mail-aside" >
-
+        <span className="fa grip"></span>
         <nav>
             <ul>
                 <li><button className="new-mail-btn" onClick={() => onNewMail()}><span className="fa pencil"></span>create new mail </button></li>
