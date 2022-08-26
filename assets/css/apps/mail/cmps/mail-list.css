@@ -19,3 +19,11 @@
     background-color: var(--hover);
     cursor: pointer;
 }
+
+.no-emails-display{
+    margin: auto;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

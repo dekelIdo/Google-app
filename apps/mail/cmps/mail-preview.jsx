@@ -16,16 +16,16 @@ export function MailPreview({ email, onActionClick }) {
 
     return <div className={classRead + ' row '} key={email.id}>
         <div className="inbox-mail-underline col">
-            <input className="icon" type="checkbox" />
+            <input className="icon check-box-list" type="checkbox" />
             <span onClick={() => onActionClick(ACTIONS.star, email.id)} className={"far star icon" + classStar}></span>
-            <span onClick={() => onActionClick(ACTIONS.draft, email.id)} className="far sent icon"></span>
+            <span onClick={() => onActionClick(ACTIONS.draft, email.id)} className="far sent icon icon-list-send"></span>
         </div>
       
             <Link to={`/mail/${email.id}`} className="large col" onClick={() => onActionClick(ACTIONS.read, email.id)}>
                 <span className="inbox-mail email-list-address"> {email.to}</span>
                 <span className="inbox-mail email-list-subject">{email.subject}</span>
                 <span className="inbox-mail email-body">{email.body}</span>
-                <span className="inbox-mail">{date}</span>
+                <span className="inbox-mail mail-date-list">{date}</span>
             </Link>
  
 

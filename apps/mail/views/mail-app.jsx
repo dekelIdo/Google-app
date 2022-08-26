@@ -45,7 +45,7 @@ export class MailApp extends React.Component {
         mailService.getInboxEmails(criteria)
             .then(mails => this.setState({ mails }))
     }
-
+    
     onRouteClick = (status) => {
         let { criteria } = this.state
         this.setState((prevState) => ({ ...prevState, criteria: { ...criteria, status } }), this.loadMails())
