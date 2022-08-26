@@ -12,6 +12,10 @@ export class UserMsg extends React.Component {
       this.setState({ msg })
       setTimeout(this.closeMsg, 3000)
     })
+    // this.unsubscribe = eventBusService.on('show-user-msg', (msg) => {
+    //   this.setState({ msg })
+    //   setTimeout(this.closeMsg, 3000)
+    // })
   }
 
   componentWillUnmount() {

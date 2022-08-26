@@ -3,7 +3,8 @@ const { Link } = ReactRouterDOM
 const ACTIONS = {
     remove: 'remove',
     read: 'read',
-    star: 'star'
+    star: 'star',
+    draft: 'draft'
 }
 
 export function MailPreview({ email, onActionClick }) {
@@ -13,18 +14,21 @@ export function MailPreview({ email, onActionClick }) {
     const classRead = email.isRead ? ' read ' : 'unread'
     const classStar = email.isStared ? ' isStar ' : ''
 
-    return <div className={classRead + ' row main'} key={email.id}>
+    return <div className={classRead + ' row '} key={email.id}>
         <div className="inbox-mail-underline col">
             <input className="icon" type="checkbox" />
             <span onClick={() => onActionClick(ACTIONS.star, email.id)} className={"far star icon" + classStar}></span>
-            <span className="far sent icon"></span>
+            <span onClick={() => onActionClick(ACTIONS.draft, email.id)} className="far sent icon"></span>
         </div>
-        <Link to={`/mail/${email.id}`} className="large col">
-            <span className="inbox-mail"> {email.to}</span>
-            <span className="inbox-mail ">{email.subject}</span>
-            <span className="inbox-mail email-body">{email.body}</span>
-            <span className="inbox-mail">{date}</span>
-        </Link>
+      
+            <Link to={`/mail/${email.id}`} className="large col" onClick={() => onActionClick(ACTIONS.read, email.id)}>
+                <span className="inbox-mail email-list-address"> {email.to}</span>
+                <span className="inbox-mail email-list-subject">{email.subject}</span>
+                <span className="inbox-mail email-body">{email.body}</span>
+                <span className="inbox-mail">{date}</span>
+            </Link>
+ 
+
         <div className="col ">
             <span onClick={() => onActionClick(ACTIONS.read, email.id)} className="fa checked icon"></span>
             <span onClick={() => onActionClick(ACTIONS.remove, email.id)} className="fa trash icon"></span>

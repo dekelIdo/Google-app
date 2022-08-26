@@ -1,6 +1,6 @@
 import { storageService } from "../../../services/storage.service.js"
-
 import { utilService } from "../../../services/util.service.js"
+
 
 export const mailService = {
     // query,
@@ -11,7 +11,8 @@ export const mailService = {
     getUserLogIn,
     markRead,
     MarkAsStared,
-    createNewMail
+    createNewMail,
+    markDraft,
 }
 
 const loggedInUser = {
@@ -40,8 +41,12 @@ function getInboxEmails(criteria) {
             return Promise.resolve(emails)
         }
 
-        if (criteria.status === 'inbox') {
+        if (criteria.status === 'draft') {
+            emails = emails.filter(email => email.isDeleted === false && email.isDraft === true)
+            return Promise.resolve(emails)
+        }
 
+        if (criteria.status === 'inbox') {
             emails = emails.filter(email => email.isDeleted === false && email.status === 'inbox')
             return Promise.resolve(emails)
         }
@@ -59,20 +64,12 @@ function getInboxEmails(criteria) {
     return Promise.resolve(emails)
 }
 
-
-// not in use
-function getInboxEmailsSimple() {
-    let emails = _loadFromStorage() || gEmails
-    return emails
-}
-
 function findEmailById(emailId) {
     if (!emailId) Promise.resolve(null)
     const emails = _loadFromStorage() || gEmails
     const currEmail = emails.find(email => email.id === emailId)
     return Promise.resolve(currEmail)
 }
-
 
 function findById(emailId) {
     if (!emailId) Promise.resolve(null)
@@ -83,12 +80,9 @@ function findById(emailId) {
 
 function removeMail(mailId) {
     let mails = _loadFromStorage()
-    // mails = mails.filter(mail => mail.id !== mailId)
     const email = mails.find(email => email.id === mailId)
-    console.log('email:', email)
 
     if (email.isDeleted) {
-        console.log('meawo')
         const filteredMails = mails.filter(mail => mail.id !== mailId)
         _saveToStorage(filteredMails)
     } else {
@@ -99,18 +93,23 @@ function removeMail(mailId) {
 
 function markRead(emailId) {
     let emails = _loadFromStorage() || gEmails
-
     const email = emails.find(email => email.id === emailId)
 
     email.isRead = !email.isRead
-    // ? email.isRead = false : email.isRead = true
     _saveToStorage(emails)
 
 }
 
+function markDraft(emailId) {
+    let emails = _loadFromStorage() || gEmails
+    const email = emails.find(email => email.id === emailId)
+    email.isDraft = !email.isDraft
+    console.log('is you draft?',email)
+    _saveToStorage(emails)
+}
+
 function MarkAsStared(emailId) {
     let emails = _loadFromStorage() || gEmails
-
     const email = emails.find(email => email.id === emailId)
 
     email.isStared = !email.isStared
@@ -130,6 +129,7 @@ function createNewMail(address, subject, body) {
         isDeleted: false,
         isStared: false,
         isRead: false,
+        isDraft: false,
         body: body ? body : 'body message',
     }
 
@@ -138,16 +138,20 @@ function createNewMail(address, subject, body) {
 }
 
 function _createEmail() {
+    const sentFrom = Math.random() > 0.5 ? 'dr.dre@tupac.com' : 'eldadYikne@gmail.net.il'
+    const randomSubject = Math.random() > 0.5 ? 'Would love to catch up sometimes' : 'I hope that in this year to come, you make mistakes'
+    const randomSentence = Math.random() > 0.5 ? 'then you are making new things, trying new things, learning, living, pushing yourself, changing yourself, changing your world. Youre doing things youve never done before, and more importantly, you doing something. The year end brings no greater pleasure then the opportunity to ,express to you seasons greetings and good wishes, May your holidays and new year be filled with joy, As the old year retires and a new one is born, we commit into the hands of our creator the, happenings of the past year and ask for ,direction and guidance in the new one, May he grant us his grace, his tranquility and His wisdom!' : 'the color of television that i would like you to bring me, my darling you make mistakes his tranquility and His wisdom!'
     return {
         id: utilService.makeId(),
         status: 'inbox',
-        subject: 'Miss you!',
-        body: 'Would love to catch up sometimes',
+        subject: randomSubject,
+        body: randomSentence,
         isRead: false,
         isStared: false,
         isDeleted: false,
+        isDraft: false,
         sentAt: 1551133930594,
-        to: 'momo@momo.com',
+        to: sentFrom,
         labels: []
     }
 }
@@ -163,7 +167,6 @@ function _saveToStorage(emails) {
 function _loadFromStorage() {
     return storageService.loadFromStorage(KEY)
 }
-
 
 const gEmails = [
     {

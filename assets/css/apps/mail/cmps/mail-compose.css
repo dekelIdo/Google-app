@@ -1,29 +1,33 @@
 .new-mail {
-
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
     padding: 3px;
-    height: 300px;
-    width: 400px;
+    height: 60vh;
+    width: 35vw;
     border-radius: 10px;
     border: 1px var(--hover) solid;
-    box-shadow: var(--box-shadow);
+    box-shadow: inset 1.5px 1.5px 0 rgb(#ecf3fe / 12%), inset 0 -1.5px 0 rgb(#ecf3fe / 9%);
     margin-left: 5px;
+    float: left;
+    bottom: 20px;
+    transition: 2s;
+    position: fixed;
 }
 
 #textBody {
     height: 70%;
-    width: 90%;
-    box-shadow: var(--box-shadow);
+    width: 100%;
     border: none;
+    margin-bottom: 1px;
 }
 
 #subject {
     height: 7%;
     border: none;
-    width: 90%;
+    width: 100%;
     box-shadow: var(--box-shadow);
 }
 
@@ -31,12 +35,12 @@
     height: 7%;
     border: none;
     box-shadow: var(--box-shadow);
-    width: 90%;
+    width: 100%;
 }
 
 .up-new-mail {
     border: none;
-    border-radius: 2px;
+    border-radius: 1px;
     height: 8%;
     width: 100%;
     background-color: var(--background);
@@ -52,4 +56,25 @@
     border-bottom-left-radius: 18px;
     border-top-right-radius: 18px;
     border-top-left-radius: 18px;
+}
+
+
+.close-box{
+    top:4px;
+    right: 4px;
+}
+
+.up-new-mail{
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-message-headline{
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.footer-mail-compose{
+    width: 100%;
+    justify-content: space-between;
 }

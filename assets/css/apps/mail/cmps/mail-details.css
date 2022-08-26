@@ -1,8 +1,24 @@
-.mail-details-main{
+
+.mail-details{
+    background-color: rgb(252, 252, 252);
+    max-width: 80vw;
+    margin: 1px;
+    margin-left: 24px;
+    margin-right: 10em;
+    height: 80vh;
+    box-shadow: var(--box-shadow);
+    border-radius: 3px;
+    border: 1px solid var(--background);
+
+}
+
+.mail-details-header{
     display: flex;
     justify-content: space-between;
-    margin-left: 4em;
-    margin-right: 4em;
+    max-width: 80vw;
+    height: 2em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .mail-details main span{
@@ -18,6 +34,22 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 4px;
+
+    box-shadow: var(--box-shadow);
 }
 
+.mail-details-body{
+    font-size: 1.5em;
 
+}
+
+.main-details-subject{
+    min-height: 2em;
+    margin: auto;
+    text-align: center;
+}
+
+.mail-details-icons{
+    justify-content: space-between;
+}

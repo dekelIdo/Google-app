@@ -39,6 +39,6 @@
 @import './apps/mail/cmps/mail-compose.css';
 @import './apps/mail/cmps/mail-details.css';
 @import './apps/mail/cmps/mail-filter.css';
-@import './apps/mail/cmps/mail-list.css';
 @import './apps/mail/cmps/mail-preview.css';
+@import './apps/mail/cmps/mail-list.css';
 @import './apps/mail/cmps/mail-aside.css';
