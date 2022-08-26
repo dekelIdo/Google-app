@@ -1,15 +1,22 @@
-.mail-home-img{
+.mail-home-img {
     height: 300px;
     width: 300px;
 }
 
-.note-home-img{
+.note-home-img {
     height: 300px;
     width: 300px;
 }
 
-.home-page{
+.home-page {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    margin-inline-start: 15px;
+    /* line-height: 50px; */
 }
