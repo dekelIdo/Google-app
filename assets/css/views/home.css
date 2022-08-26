@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .logo {
@@ -19,4 +20,46 @@
     height: 3rem;
     margin-inline-start: 15px;
     /* line-height: 50px; */
+}
+
+.links-container-home {
+    display: flex;
+    flex-direction: row;
+}
+
+.home-title {
+    font-size: 70px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to left, #bd2c36, #3b50ef, #ecdd0b, #2cbd36);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.about {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.about-us {
+    border: 1px solid rgb(201, 201, 201);
+    height: 450px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    margin-inline-end: 30px;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+}
+
+.about-us img {
+    height: 200px;
+    width: 200px;
+    margin-top: 15px;
+}
+.about-us p {
+text-align: center;
 }
