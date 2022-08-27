@@ -25,7 +25,6 @@ const KEY = 'emailsDB'
 
 function getInboxEmails(criteria) {
     let emails = _loadFromStorage() || gEmails
-    console.log('ssss',emails)
     if (!emails) {
         emails = gEmails
         _saveToStorage(emails)
@@ -292,7 +291,7 @@ const gEmails = [
         isDeleted: false,
         isDraft: false,
         sentAt: 1551133950694,
-        to: 'res@tomorrowland.com',
+        to: 'res@tomorrow.com',
         labels: []
     },
     {
