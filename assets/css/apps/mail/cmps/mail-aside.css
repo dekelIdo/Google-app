@@ -28,17 +28,18 @@
     border: none;
     cursor: pointer;
     font-weight: 500;
+    font-weight: bold;
 }
 
 .new-mail-btn:hover {
     box-shadow: var(--box-shadow);
-
 }
 
 .nav-link-aside {
+    width: 98vw;
     font-size: large;
     padding: 5px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .nav-link-aside >*{
@@ -56,3 +57,7 @@
     background-color: var(--hover);
 }
 
+.unread-mails-count{
+    color: rgb(18, 16, 16);
+    font-size: .8em;
+}

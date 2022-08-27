@@ -1,9 +1,9 @@
 
 .mail-details{
     background-color: rgb(252, 252, 252);
-    max-width: 80vw;
+    max-width: 98vw;
     margin: 1px;
-    margin-left: 24px;
+    margin-left: 16px;
     margin-right: 10em;
     height: 80vh;
     box-shadow: var(--box-shadow);

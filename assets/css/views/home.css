@@ -1,13 +1,23 @@
 .mail-home-img {
+    margin-bottom: 30px;
     height: 300px;
     width: 300px;
+}
+
+.mail-home-img:hover{
+   height: 310px;
+   width: 310px;
 }
 
 .note-home-img {
-    height: 300px;
-    width: 300px;
+    height: 280px;
+    width: 280px;
 }
-
+.note-home-img:hover{
+    height: 310px;
+    width: 310px;
+ }
+ 
 .home-page {
     display: flex;
     justify-content: center;
@@ -28,13 +38,21 @@
 }
 
 .home-title {
-    font-size: 70px;
+    font-size: 67px;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to left, #bd2c36, #3b50ef, #ecdd0b, #2cbd36);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+}
+
+.home-subtitle{
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-clip: text;
+    color: #a36a6e;
 }
 
 .about {

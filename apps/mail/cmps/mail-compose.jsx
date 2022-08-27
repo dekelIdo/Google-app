@@ -28,11 +28,6 @@ export class MailCompose extends React.Component {
         this.onGoBack()
     }
 
-    onGoBack = () => {
-        console.log('histoo', this.props.history)
-        // this.props.history.push('/mail')
-    }
-
     render() {
         const { fullName, subject, textBody } = this.state
         const { onNewMail } = this.props
@@ -72,10 +67,9 @@ export class MailCompose extends React.Component {
                 <div className="flex footer-mail-compose">
                     <div>
                         <button className="send-mail-btn">Send</button>
-                        <span className="far sent icon"></span>
                     </div>
 
-                    <span className="far trash icon"></span>
+                    <span onClick={() => onNewMail()} className="fa trash icon"></span>
                 </div>
             </form>
         </React.Fragment>

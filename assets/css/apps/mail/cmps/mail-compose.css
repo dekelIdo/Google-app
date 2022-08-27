@@ -8,8 +8,8 @@
     height: 60vh;
     width: 35vw;
     border-radius: 10px;
-    border: 1px var(--hover) solid;
-    box-shadow: inset 1.5px 1.5px 0 rgb(#ecf3fe / 12%), inset 0 -1.5px 0 rgb(#ecf3fe / 9%);
+    border: 1px var(--box-shadow) solid;
+    /* box-shadow: inset 1.5px 1.5px 0 rgb(#ecf3fe / 12%), inset 0 -1.5px 0 rgb(#ecf3fe / 9%); */
     margin-left: 5px;
     float: left;
     bottom: 50px;
@@ -57,7 +57,6 @@
     border-top-right-radius: 18px;
     border-top-left-radius: 18px;
 }
-
 
 .close-box{
     top:4px;

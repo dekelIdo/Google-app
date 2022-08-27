@@ -33,7 +33,7 @@ export class UserMsg extends React.Component {
     if (!msg) return <span></span>
     return (
       <section className={'user-msg ' + msg.type}>
-        <span className="fa close" onClick={closeMsg}></span>
+        <span className="fa close-box" onClick={closeMsg}></span>
         {msg.txt}
       </section>
     )

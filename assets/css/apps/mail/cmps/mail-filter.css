@@ -1,12 +1,16 @@
 
 
 .main-email-search{
-width: 60%;
-margin-right: 10px;
+width: 98%;
+margin-right: 5px;
 margin-left: 10px;
 height: 2.2em;
 border: none;
 background-color: var(--background);
 border-radius: 5px;
 box-shadow: var(--box-shadow);
+}
+
+.grip{
+display: none !important
 }

@@ -4,7 +4,8 @@ export function Home() {
 
     return <section className="home-page">
 
-        <h1 className="home-title">Welcome to AppSus !</h1>
+        <div className="home-title">Welcome to AppSus !</div>
+        <div className="home-subtitle">Manage your to-do list and your inbox mail</div>
         <div className="links-container-home">
 
         <div className="mail-home-img">

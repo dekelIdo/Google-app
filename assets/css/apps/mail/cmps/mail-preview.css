@@ -51,9 +51,9 @@
 .email-list-subject{
     overflow: hidden;
     text-overflow: ellipsis;
-    
     white-space: nowrap;
-    min-width: 240px;
+    min-width: 260px;
+    font-size:1.2em;
 }
 
 .email-body{
@@ -71,4 +71,18 @@
     transition: .5s;
     background-color: var(--hover2);
     box-shadow: var(--box-shadow);
+}
+
+/* .email-body :hover{
+    background-color:none;
+    box-shadow: none;
+} */
+
+.no-hover :hover{
+    background-color:none;
+    box-shadow: none;
+}
+
+.div-for-mobile{
+    display: none;
 }

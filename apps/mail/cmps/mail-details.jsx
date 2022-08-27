@@ -29,27 +29,25 @@ export class MailDetails extends React.Component {
         })
     }
 
-
     onGoBack = () => {
         this.props.history.push('/mail')
     }
 
-
     render() {
         const { mail } = this.state
-        
+
         if (!mail) return <div>wait a second</div>
         const classStar = mail.isStared ? ' isStar ' : ''
         const date = this.convertDate(mail.sentAt)
-        const {onActionClick} = this.props 
-        
+        const {removeMail, markDraft, MarkAsStared} = mailService
+
         return <section className="mail-details">
             <div className="flex  mail-details-icons">
                 <span onClick={this.onGoBack} className="fa go-back icon"></span>
                 <div>
-                <span className="fa trash icon"></span>
-                <span className="far sent icon"></span>
-                <span className={"far star icon" + classStar}></span>
+                    <span onClick={() => removeMail(mail.id)} className="fa trash icon"></span>
+                    <span onClick={() => markDraft(mail.id)} className="far sent icon" ></span>
+                    <span onClick={() => MarkAsStared(mail.id)} className={"far star icon" + classStar}></span>
 
                 </div>
             </div>
