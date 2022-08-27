@@ -1,0 +1,23 @@
+
+
+
+.app-header ul>*:not(:last-child) {
+    margin-inline-end: 15px;
+
+}
+
+.app-header a {
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+.app-header h2{
+    line-height: 100px;
+}
+.active {
+    color: rgb(0, 187, 244);
+    font-size: 1.3rem;
+}
+.my-active {
+    color: rgb(0, 187, 244);
+    font-size: 20px;
+}

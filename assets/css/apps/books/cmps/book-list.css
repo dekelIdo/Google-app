@@ -1,0 +1,15 @@
+
+
+
+
+
+
+.books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .5em;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 15px;
+    background-color: aliceblue;
+}

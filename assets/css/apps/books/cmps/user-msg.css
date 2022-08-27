@@ -1,0 +1,28 @@
+.user-msg.success{
+    background-color: #001f3f;
+    font-size: 1em;
+    max-width: 120px;
+    color: aliceblue;
+
+}
+.user-msg.error{
+    background-color: rgb(241, 48, 77);
+    font-size: 1em;
+    color: black;
+    max-width: 230px;
+}
+.user-msg button{
+    float: left;
+    margin: 1em;
+    
+}
+.user-msg{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-radius: 30px;
+    
+}
