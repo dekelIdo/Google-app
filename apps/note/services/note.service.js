@@ -9,6 +9,7 @@ export const noteService = {
     removeNote,
     getNoteById,
     setNoteDone,
+    pinedNote,
 }
 
 
@@ -18,11 +19,22 @@ function removeNote(noteId) {
     _saveNotesToStorage(newNotes)
     return Promise.resolve(newNotes)
 }
-
-function addNote(newTxt, newTitle, type, backgroundColor,image) {
-    if (!newTxt || !newTitle) return  alert('enter text')
+function pinedNote(noteId) {
     let notes = _loadNotesFromStorage() || gNotes
-    const newNote = _creatNote(newTxt, newTitle, type, backgroundColor,image)
+    const currNote = notes.find(note => note.id === noteId)
+    const currNoteIdx = notes.findIndex(note => note.id === noteId)
+    notes.splice(currNoteIdx, 1)
+    notes.unshift(currNote)
+    _saveNotesToStorage(notes)
+    return Promise.resolve(notes)
+
+
+}
+function addNote(newTxt, newTitle, type, backgroundColor, image, urlVideo) {
+    if (!newTxt || !newTitle) return alert('enter text')
+    let notes = _loadNotesFromStorage() || gNotes
+    const newNote = _creatNote(newTxt, newTitle, type, backgroundColor, image, urlVideo)
+    console.log('addnewNote', newNote, urlVideo);
     notes.unshift(newNote)
     _saveNotesToStorage(notes)
     console.log(notes);
@@ -47,7 +59,7 @@ function getNoteById(noteId) {
     return currNote
 
 }
-function _creatNote(newTxt, newTitle, type, backgroundColor ="#FFFFFF",image) {
+function _creatNote(newTxt, newTitle, type, backgroundColor = "#FFFFFF", image, urlVideo) {
 
     if (type === 'todos') {
         return {
@@ -79,8 +91,8 @@ function _creatNote(newTxt, newTitle, type, backgroundColor ="#FFFFFF",image) {
             }
         }
     }
-    if (type === 'note-img'){
-        return{
+    if (type === 'img') {
+        return {
             id: utilService.makeId(),
             type: "note-img",
             info: {
@@ -92,7 +104,21 @@ function _creatNote(newTxt, newTitle, type, backgroundColor ="#FFFFFF",image) {
             }
         }
     }
+    if (type === 'video') {
+        console.log('videovideovideovideovideo');
+        return {
+            id: utilService.makeId(),
+            type: "note-video",
+            info: {
+                url: urlVideo,
+                title: newTitle,
+            },
+            style: {
+                backgroundColor: backgroundColor,
 
+            }
+        }
+    }
 }
 
 function _splitTodos(newTxt) {
@@ -126,7 +152,31 @@ const gNotes = [
             txt: "Fullstack Me Baby!"
         },
         style: {
+            backgroundColor: "#FFDC00",
+            
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "note-video",
+        info: {
+            url: "https://www.youtube.com/watch?v=4Dzhgr8xBpI&t=1s&ab_channel=DEKEL",
+            title: "my party"
+        },
+        style: {
             backgroundColor: "#FFFFFF",
+
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: true,
+        info: {
+            txt: "buy to Dekel underwer"
+        },
+        style: {
+            backgroundColor: "#3D9970",
 
         }
     },
@@ -164,8 +214,24 @@ const gNotes = [
             title: "my party"
         },
         style: {
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#39CCCC",
 
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "note-todos",
+        info: {
+            label: "To buy:",
+            todos: [
+                { txt: "ice-cream", done: false },
+                { txt: "bamba", done: false },
+                { txt: "milk", done: false }
+            ]
+        },
+        style: {
+            backgroundColor: "#FF4136",
+    
         }
     },
 ];

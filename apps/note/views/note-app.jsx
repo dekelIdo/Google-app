@@ -5,7 +5,7 @@ import { noteService } from "../services/note.service.js"
 import { InputArea } from '../cmps/input-area.jsx'
 import { OneLineInput } from "../cmps/cmp-dynamicCmp/one-line-input.jsx"
 import { utilService } from "../../../services/util.service.js"
-import { showSuccessMsg ,showErrorMsg} from "../../../services/event-bus.service.js"
+import { showSuccessMsg, showErrorMsg } from "../../../services/event-bus.service.js"
 import { UserMsg } from "../../../cmps/user-msg.jsx"
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -19,6 +19,7 @@ export class NoteApp extends React.Component {
             title: '',
             text: '',
             backgroundColor: '',
+            videoUrl: '',
         },
 
         isOnfocus: false
@@ -36,13 +37,14 @@ export class NoteApp extends React.Component {
         noteService.query()
             .then((notes) => this.setState({ notes }))
     }
-componentDidUpdate(prevProps, prevState) {
-    if(prevState.note.name){
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.note.name) {
 
-        this.setState({note: {name: '',title: '',text: '',backgroundColor: '',},isOnfocus: false})
+            this.setState({ note: { name: '', title: '', text: '', backgroundColor: '', }, isOnfocus: false })
+        }
+
     }
 
-}
     toggleFocus = () => {
         const { isOnfocus } = this.state
         const focus = isOnfocus ? false : true
@@ -58,19 +60,38 @@ componentDidUpdate(prevProps, prevState) {
         const { note } = this.state
         const type = target.getAttribute('name')
         console.log(text, title, type);
-        noteService.addNote(text, title, type, backgroundColor,this.onImageChange).then(notes => { this.setState((prevState) => ({ ...prevState, note: { ...note, name: type } })), this.loadNotes()  })
-       
+        const videoUrl = this.onInputVideo()
+
+        noteService.addNote(text, title, type, backgroundColor, this.onImageChange, videoUrl).then(notes => { this.setState((prevState) => ({ ...prevState, note: { ...note, name: type } })), this.loadNotes() })
+
 
         console.log('this.state', this.state)
     }
+    onTypeUrlVideo = (ev) => {
+        const { target } = ev
+        const { videoUrl } = this.state.note
+        const { note } = this.state
+        this.setState({ ...videoUrl, videoUrl: target.value })
+        this.setState((prevState) => ({ ...prevState, note: { ...note, videoUrl: ev.target.value } }))
+        console.log(this.state.note.videoUrl);
+    }
+    onInputVideo = (ev) => {
+        console.log(this.state.note.videoUrl);
+        return this.state.note.videoUrl
+    }
     onChangeColor = (ev) => {
         console.log(ev.target.name);
-        const{note}=this.state
-        this.setState((prevState)=>({...prevState, note:{...note,backgroundColor:ev.target.name}}))
+        const { note } = this.state
+        this.setState((prevState) => ({ ...prevState, note: { ...note, backgroundColor: ev.target.name } }))
     }
-    onImageChange=(ev)=>{
-        if(ev.target.name!=='note-img') return 
+    onImageChange = (ev) => {
+        if (ev.target.name !== 'note-img') return
         return ev.target.value
+    }
+    onPined = (noteId) => {
+        noteService.pinedNote(noteId).then(notes => {
+            this.loadNotes()
+        })
     }
     onRemove = (noteId) => {
         noteService.removeNote(noteId).then(notes => {
@@ -96,13 +117,13 @@ componentDidUpdate(prevProps, prevState) {
         return <section className="note-app">
 
             {!isOnfocus && <OneLineInput toggleFocus={this.toggleFocus} handleChange={this.handleChange} text={text} onAddNote={this.onAddNote} />}
-            {isOnfocus && <InputArea onImageChange={this.onImageChange} onChangeColor={this.onChangeColor} handleChange={this.handleChange} onAddNote={this.onAddNote} state={this.state} />}
+            {isOnfocus && <InputArea onTypeUrlVideo={this.onTypeUrlVideo} onImageChange={this.onImageChange} onChangeColor={this.onChangeColor} handleChange={this.handleChange} onAddNote={this.onAddNote} state={this.state} />}
 
 
 
-            <NoteList onDoneIsCheack={this.onDoneIsCheack} onRemove={this.onRemove} notes={notes} />
+            <NoteList onPined={this.onPined} onDoneIsCheack={this.onDoneIsCheack} onRemove={this.onRemove} notes={notes} />
             {/* <NoteFilter /> */}
-            <UserMsg  />
+            <UserMsg />
         </section>
 
     }

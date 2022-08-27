@@ -5,7 +5,7 @@
     position: relative;
     margin-bottom: 10px;
     break-inside: avoid;
-    border:  000001px solid rgb(210, 210, 210);
+    border: 000001px solid rgb(210, 210, 210);
 
 }
 
@@ -34,9 +34,28 @@
 
 
 .close {
-    opacity: 1;
     position: absolute;
     right: -15px;
     top: -15px;
+    opacity: 0;
     z-index: 5;
+}
+
+.pin {
+    position: absolute;
+    right: 240px;
+    top: -14px;
+    opacity: 0;
+    z-index: 5;
+
+}
+
+.note-container:hover  .pin {
+
+    transition: 0.5s;
+    opacity: 1;
+}
+.note-container:hover .close{
+    transition: 0.5s;
+    opacity: 1;
 }
