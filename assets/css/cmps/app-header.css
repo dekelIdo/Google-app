@@ -28,11 +28,11 @@ nav a.active {
     text-decoration: overline;
 }
 
-nav img:last-child {
+.nav-hedear img:last-child {
     margin-right: 2rem;
 }
 
-nav img {
+.nav-hedear img {
     height: 45px;
     width: 45px;
 
@@ -50,7 +50,7 @@ nav img {
 }
 
 @media (max-width: 500px) {
-    nav {
+    .nav-hedear {
         position: fixed;
         flex-direction: column;
         top: 9%;
@@ -73,7 +73,7 @@ nav img {
         display: block;
     }
 
-    nav a {
+    .nav-hedear a {
         height: 40px;
         width: 40px;
     }
@@ -83,5 +83,5 @@ nav img {
         margin-right: 15px;
     }
 
-    nav.menu-open {}
+    
 }

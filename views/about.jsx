@@ -4,7 +4,7 @@ export function About() {
         <div className="about-us dekel"> 
         <img src="./img/dekel.jpeg"/>
         <h2>Dekel Ido</h2>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, repudiandae! distinctio laboriosam Ipsam saepe qui exercitationem doloribus facere, aspernatur non soluta placeat vitae labore.</p>
+<p>Lorem ipsum dolor sit amet repudiandae! distinctio laboriosam Ipsam saepe qui exercitationem doloribus facere, aspernatur non soluta placeat vitae labore.</p>
         </div>
         <div className="about-us eldad"> 
 
