@@ -50,8 +50,8 @@ export class NoteApp extends React.Component {
         const focus = isOnfocus ? false : true
         this.setState({ isOnfocus: focus })
     }
-    onDoneIsCheack = (noteId, cheakId) => {
-        noteService.setNoteDone(noteId, cheakId).then((notes) => this.setState((prevState) => ({ notes }), this.loadNotes))
+    onDoneIsCheack = (noteId, cheakId,cheacked) => {
+        noteService.setNoteDone(noteId, cheakId).then((notes) => this.setState((prevState) => ({ notes })))
     }
     onAddNote = (ev) => {
         ev.preventDefault()
