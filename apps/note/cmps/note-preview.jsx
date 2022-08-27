@@ -58,6 +58,7 @@ export class NotePreview extends React.Component {
             <div className="note-container"  style={{backgroundColor: backgroundColor}}>
                 
                 <span onClick={this.props.onRemove} className="fa close"></span>
+                <span onClick={this.props.onPined} className="fa pin"></span>
 
                 <DynamicCmp note={note} />
 

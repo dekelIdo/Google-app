@@ -146,6 +146,12 @@
 .fa.pencil::before{
     content: '\f303';
 }
+.fa.pin::before{
+    content: '\f08d';
+}
+.fa.home::before{
+    content: '\f015';
+}
 
 
 .far.inbox-unread::before{

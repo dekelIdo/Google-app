@@ -1,0 +1,13 @@
+.note-app{
+    
+        font-family: Arial, Helvetica, sans-serif;
+    
+}
+@media (max-width:535px){
+    .note-app{
+        max-width: 261px;
+        margin: auto;
+    }
+}
+
+
