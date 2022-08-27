@@ -23,7 +23,7 @@ export class AppHeader extends React.Component {
                 <NavLink to="/note"><img src="./img/notes.png" onClick={this.toggleMenu}title='notes' /></NavLink>
                 <NavLink to="/mail"><img src="./img/gmailll.png" onClick={this.toggleMenu}title='mail' /></NavLink>
             </nav>
-            <img src="../img/menu.png" className="menu" onClick={this.toggleMenu} />
+            <img src="./img/menu.png" className="menu" onClick={this.toggleMenu} />
         </header >
     }
 }
