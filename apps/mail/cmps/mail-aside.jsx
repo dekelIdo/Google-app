@@ -13,7 +13,7 @@ function _MailAside(props) {
             <ul className="ul-side-bar">
                 <li><button className="new-mail-btn" onClick={() => onNewMail()}><span className="fa pencil"></span>create new mail </button></li>
                 <li > <NavLink activeClassName="selected" className="nav-link-aside" onClick={() => (onRouteClick('inbox'),onClickGrip())} exact to="/mail/"><span className="fa inbox"></span> Inbox </NavLink></li>
-                <li > <NavLink activeClassName="selected" className="nav-link-aside" onClick={() => onUnReadRouteClick()} exact to="/mail/"><span className="fa inbox-unread"></span>Unread <span className="unread-mails-count">{unReadMails}</span></NavLink></li>
+                <li > <NavLink activeClassName="selected" className="nav-link-aside" onClick={() => (onUnReadRouteClick(),onClickGrip())} exact to="/mail/"><span className="fa inbox-unread"></span>Unread <span className="unread-mails-count">{unReadMails}</span></NavLink></li>
                 <li ><NavLink  activeClassName="selected" className="nav-link-aside" onClick={() => (onRouteClick('trash'),onClickGrip())} exact to="/mail/"><span className="fa trash"></span> Trash</NavLink></li>
                 <li ><NavLink  activeClassName="selected" className="nav-link-aside" onClick={() => (onRouteClick('draft'),onClickGrip())} exact to="/mail/"> <span className="far sent"></span>Important</NavLink></li>
                 <li ><NavLink activeClassName="selected" className="nav-link-aside" onClick={() => (onRouteClick('stared'),onClickGrip())} exact to="/mail/"> <span className="far star isStar"></span>Favorite</NavLink></li>

@@ -8,8 +8,6 @@ const ACTIONS = {
 }
 
 export function MailPreview({ email, onActionClick }) {
-
-    convertDateForMobile(1551133930594)
     const date = convertDate(email.sentAt)
     const dateForMobile = convertDateForMobile(email.sentAt)
     const classRead = email.isRead ? ' read ' : 'unread'
@@ -44,7 +42,6 @@ export function MailPreview({ email, onActionClick }) {
     </div>
 }
 
-
 function convertDate(timeStamp) {
     const date = new Date(timeStamp).toLocaleDateString("en-IL");
     return date
@@ -52,24 +49,5 @@ function convertDate(timeStamp) {
 
 function convertDateForMobile(timeStamp) {
     const date = new Date(timeStamp).toLocaleDateString(undefined, {month: "short", day: "numeric"});
-    console.log('mamiiiii', date)
     return date
 }
-
-
-
-// <tr className={classRead} key={email.id}>
-//         <td className="inbox-mail-underline"><input type="checkbox" /></td>
-//         <td className="inbox-mail-underline"><span onClick={() => onActionClick(ACTIONS.star,email.id)} className={"far star" + classStar}></span></td>
-//         <td className="inbox-mail-underline"><span className="far sent"></span></td>
-
-//         <Link to={`/mail/${email.id}`}>
-//             <td style={{ width: "20%" }} className="inbox-mail "> {email.to}</td>
-//             <td style={{ width: "20%" }} className="inbox-mail ">{email.subject}</td>
-//             <td className="inbox-mail ">{email.body}</td>
-//             <td className="inbox-mail">{date}</td>
-//         </Link>
-
-//         <td className="inbox-mail-underline"><span onClick={() =>onActionClick(ACTIONS.read,email.id)} className="fa checked"></span></td>
-//         <td className="inbox-mail-underline"><span onClick={() =>onActionClick(ACTIONS.remove,email.id)} className="fa trash"></span></td>
-//     </tr>

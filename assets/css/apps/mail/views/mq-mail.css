@@ -64,7 +64,7 @@
     .main-email-search {
         width: 95vw;
     }
-    
+
     .mail-details {
         margin-left: 0;
         margin-right: 0;
@@ -88,7 +88,7 @@
         text-decoration: underline;
     }
 
-    .ul-side-bar:first-child{
+    .ul-side-bar:first-child {
         padding-top: 70px;
     }
 }
@@ -144,17 +144,17 @@
     .mail-date-list {
         display: none;
     }
-    
+
     .large {
         display: flex;
         flex-direction: column;
     }
 
     .new-mail {
-    box-shadow: none;        
+        box-shadow: none;
         top: 10px;
         width: 97vw;
-        height: 99vh;
+        height: 97vh;
         z-index: 11;
     }
 
