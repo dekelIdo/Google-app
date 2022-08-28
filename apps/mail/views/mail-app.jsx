@@ -79,7 +79,7 @@ export class MailApp extends React.Component {
 
     onMarkDraft = (mailId) => {
         mailService.markDraft(mailId)
-        showSuccessMsg('save in archive')
+        showSuccessMsg('save as important')
     }
 
     onActionClick = (action, mailId) => {
