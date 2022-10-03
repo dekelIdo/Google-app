@@ -1,6 +1,5 @@
-# Google-app-EldaDekel
 
-# React, Pixel Perfect, Responsive, Filtering
+# Google-app - React, Pixel Perfect, Responsive, Filtering
 
 <img width="947" alt="Google-app" src="https://user-images.githubusercontent.com/109578899/193601290-bc4edfa8-3dbe-46e4-b2db-d3f7d5415ca9.png">
 
