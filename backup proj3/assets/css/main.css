@@ -1,18 +1,23 @@
 /* Setup */
 
 @import './setup/variables.css';
+@import './setup/fonts.css';
 
 /* Basics */
+
 @import './basics/base.css';
 @import './basics/helpers.css';
 @import './basics/layout.css';
 
 /* Views */
 @import './views/home.css';
+
 @import './apps/note/views/note-app.css';
+
 @import './apps/mail/views/mail-app.css';
 
 /* Cmps  Notes*/
+
 @import './cmps/user-msg.css';
 @import './cmps/app-header.css';
 @import './apps/note/cmps/note-add.css';
@@ -34,7 +39,6 @@
 @import './apps/mail/cmps/mail-compose.css';
 @import './apps/mail/cmps/mail-details.css';
 @import './apps/mail/cmps/mail-filter.css';
-@import './apps/mail/cmps/mail-preview.css';
 @import './apps/mail/cmps/mail-list.css';
+@import './apps/mail/cmps/mail-preview.css';
 @import './apps/mail/cmps/mail-aside.css';
-@import './apps/mail/views/mq-mail.css';

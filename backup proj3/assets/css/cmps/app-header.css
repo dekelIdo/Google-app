@@ -1,0 +1,26 @@
+header {
+    background: var(--side-bar);
+    border-bottom: 2px solid white;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    box-shadow: var(--box-shadow);
+}
+
+nav a {
+    margin: .5em;
+}
+
+nav a:active {
+    color: purple;
+}
+
+nav a.active {
+    color: var(--active);
+    font-weight: bold;
+    text-decoration: overline;
+}
+

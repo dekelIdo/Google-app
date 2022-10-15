@@ -1,0 +1,18 @@
+.mail-aside {
+    max-width: 30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    background-color: var(--background);
+}
+
+.mail-aside ul {
+    padding: 5px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.mail-aside ul li {
+    margin-bottom: 5px;
+}

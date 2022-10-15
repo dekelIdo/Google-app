@@ -1,0 +1,21 @@
+.user-msg {
+    background-color: lightgray;
+    padding: 1em;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+.user-msg.success {
+    background-color: var(--side-bar);
+}
+
+.user-msg.error {
+    background-color: rgb(122, 79, 85);
+}
+
+
+.user-msg button{
+    float: right;
+    margin: 1em;
+}

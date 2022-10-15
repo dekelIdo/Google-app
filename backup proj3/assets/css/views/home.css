@@ -1,0 +1,15 @@
+.mail-home-img{
+    height: 300px;
+    width: 300px;
+}
+
+.note-home-img{
+    height: 300px;
+    width: 300px;
+}
+
+.home-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
