@@ -181,15 +181,16 @@
     }
 
     .div-for-mobile {
-        display: block;
-        text-align: center;
-        width: 55px;
+        display: block !important;
+        text-align: center !important;
+        width: 68px !important;
     }
 }
 
 /* !mobile only! */
 
 @media (max-width: 400px) {
+
 
     .mail-aside {
         min-width: 92.4%;

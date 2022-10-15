@@ -14,10 +14,12 @@ export class NotePreview extends React.Component {
 
     }
     onDone = (ev) => {
-        this.props.onDoneIsCheack(this.state.note.id,ev.target.id)       
+        this.props.onDoneIsCheack(this.state.note.id,ev.target.id,ev.target.checked)       
         console.log('ev.target',ev.target.id)
-            console.log(this.state.note.info.todos);
-            
+        console.log('ev.target',ev.target.checked)
+      
+        console.log(this.state.note.info.todos);
+        ev.target.checked=!ev.target.checked
 
     }
     componentDidMount() {

@@ -19,7 +19,7 @@ export function MailPreview({ email, onActionClick }) {
             <span onClick={() => onActionClick(ACTIONS.star, email.id)} className={"far star icon desktop-star " + classStar}></span> 
             <span title="save as important" onClick={() => onActionClick(ACTIONS.draft, email.id)} className="far sent icon icon-list-send"></span>
 
-            <div className="div-for-mobile flex column justify-center align-center col">
+            <div className="div-for-mobile col">
                 <div>
             <span onClick={() => onActionClick(ACTIONS.star, email.id)} className={"far star icon" + classStar}></span>
                 </div>

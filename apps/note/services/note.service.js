@@ -197,8 +197,8 @@ const gNotes = [
         info: {
             label: "Get my stuff together",
             todos: [
-                { txt: "Driving liscence", done: false },
-                { txt: "Coding power", done: false }
+                { txt: "Driving liscence", done: false , id: utilService.makeId()},
+                { txt: "Coding power", done: false, id: utilService.makeId() }
             ]
         },
         style: {
@@ -224,9 +224,9 @@ const gNotes = [
         info: {
             label: "To buy:",
             todos: [
-                { txt: "ice-cream", done: false },
-                { txt: "bamba", done: false },
-                { txt: "milk", done: false }
+                { txt: "ice-cream", done: false, id: utilService.makeId() },
+                { txt: "bamba", done: false , id: utilService.makeId()},
+                { txt: "milk", done: false , id: utilService.makeId()}
             ]
         },
         style: {

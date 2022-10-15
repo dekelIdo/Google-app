@@ -84,5 +84,11 @@
 }
 
 .div-for-mobile{
-    display: none;
+    display: none !important;
+    /* flex column justify-center align-center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }

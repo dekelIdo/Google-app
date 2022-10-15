@@ -1,0 +1,26 @@
+.books-options button{
+cursor: pointer;
+}
+.book-add button{
+    cursor: pointer;
+
+}
+.book-add{
+    text-align: center;
+}
+.books-options li{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    border: 1px solid;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 700px;
+}
+
+.book-add{
+    background-color: blanchedalmond;
+
+}

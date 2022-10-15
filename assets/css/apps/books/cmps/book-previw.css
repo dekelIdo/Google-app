@@ -1,0 +1,35 @@
+.book-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px;
+    text-align: center;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.43);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+box-shadow: var(--box-shadow);
+}
+
+   
+
+.container-img {
+    height: 200px;
+    width: 160px;
+}
+
+.container-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.book-preview h2 {
+ 
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+}

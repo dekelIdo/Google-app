@@ -1,0 +1,74 @@
+.book-details {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+    border: solid 4px;
+    max-width: 60vw;
+    margin: auto;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.43);
+    background-color: #eceded;
+    margin-top: 20px;
+}
+
+.container-text h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+.container-text button {
+    background-color: rgb(88, 97, 97);
+    color: aliceblue;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.container-text button:hover {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    transition: 0.5s;
+}
+
+.container-img-details img {
+    
+    /* height: 60vh;; */
+}
+
+.container-text {
+    margin: 10px;
+
+}
+
+.price {
+    font-weight: bold;
+}
+.red{
+color: red;
+}
+.green{
+color:green;
+}
+.slae-img{
+    height: 50px;
+    width: 50px;
+}
+.modal-Review {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1.5px rgb(118, 109, 109) solid;
+    transition: 2s;
+    background-color: #c8c7c6	;   
+    height: 400px;
+    width: 300px;
+    border-radius: 5px;
+    translate: -50% -50%;
+    text-align: center;
+
+    
+}
+.btn-container{
+    display: flex;
+
+}

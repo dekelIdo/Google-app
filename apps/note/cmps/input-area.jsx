@@ -58,18 +58,18 @@ export class InputArea extends React.Component {
 
 
                 <div className={isColorShown ? 'colors-container block' : 'colors-container none'}>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#001f3f" className="colors" src="../img/color0.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#0074D9" className="colors" src="../img/color1.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#7FDBFF" className="colors" src="../img/color2.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#39CCCC" className="colors" src="../img/color3.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#B10DC9" className="colors" src="../img/color4.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#F012BE" className="colors" src="../img/color5.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#85144b" className="colors" src="../img/color6.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#FF4136" className="colors" src="../img/color7.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#FF851B" className="colors" src="../img/color8.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#FFDC00" className="colors" src="../img/color9.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#3D9970" className="colors" src="../img/color10.png" /></div>
-                    <div onClick={onChangeColor} className={classColor} ><img name="#2ECC40" className="colors" src="../img/color11.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#001f3f" className="colors" src="./img/color0.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#0074D9" className="colors" src="./img/color1.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#7FDBFF" className="colors" src="./img/color2.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#39CCCC" className="colors" src="./img/color3.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#B10DC9" className="colors" src="./img/color4.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#F012BE" className="colors" src="./img/color5.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#85144b" className="colors" src="./img/color6.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#FF4136" className="colors" src="./img/color7.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#FF851B" className="colors" src="./img/color8.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#FFDC00" className="colors" src="./img/color9.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#3D9970" className="colors" src="./img/color10.png" /></div>
+                    <div onClick={onChangeColor} className={classColor} ><img name="#2ECC40" className="colors" src="./img/color11.png" /></div>
                 </div>
 
                 <div className={isVideoOpen ? 'video-container block' : 'video-container none'}><input onChange={onTypeUrlVideo} name="video" type="search" placeholder="Enter video url..." value={videoUrl} /><button  name="video" onClick={onAddNote} >select</button> </div>
