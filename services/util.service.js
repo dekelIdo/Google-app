@@ -68,7 +68,7 @@ function getMonthName(date) {
 }
 
 function createSent() {
-    const text = 'I hope that in this year to come, you make mistakes. Because if you are making mistakes, then you are making new things, trying new things, learning, living, pushing yourself, changing yourself, changing your world. Youre doing things youve never done before, and more importantly, you doing something. The year end brings no greater pleasure then the opportunity to ,express to you seasons greetings and good wishes, May your holidays and new year be filled with joy, As the old year retires and a new one is born, we commit into the hands of our creator the, happenings of the past year and ask for ,direction and guidance in the new one, May he grant us his grace, his tranquility and His wisdom!'
+    const text = 'I hope that on this year to come, you make mistakes. Because if you are making mistakes, then you are making new things, trying new things, learning, living, pushing yourself, changing yourself, changing your world. Youre doing things youve never done before, and more importantly, you doing something. The year end brings no greater pleasure then the opportunity to ,express to you seasons greetings and good wishes, May your holidays and new year be filled with joy, As the old year retires and a new one is born, we commit into the hands of our creator the, happenings of the past year and ask for ,direction and guidance in the new one, May he grant us his grace, his tranquility and His wisdom!'
     const newText = text.split(',')
     const randomNum = utilService.getRandomIntInclusive(0,28)
     return( newText[randomNum])
