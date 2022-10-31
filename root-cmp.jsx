@@ -8,6 +8,7 @@ import {BookAdd} from './apps/books/pages/book-add.jsx'
 import {BookDetails} from './apps/books/pages/book-details.jsx'
 import {BookApp} from './apps/books/pages/book-app.jsx'
 
+// consts for route
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 

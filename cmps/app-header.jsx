@@ -19,7 +19,7 @@ export class AppHeader extends React.Component {
 
             <nav className= { `nav-hedear ${isOpen ? 'menu-open' : ''}`}>
                 <NavLink exact to="/"><img src="./img/home.png" onClick={this.toggleMenu}title='Home' /></NavLink>
-                <NavLink to="/about"><img src="./img/about.png" onClick={this.toggleMenu} title='about us'/></NavLink>
+                <NavLink to="/about"><img src="./img/about.png" onClick={this.toggleMenu} title='about us Dekel & Eldad'/></NavLink>
                 <NavLink to="/note"><img src="./img/notes.png" onClick={this.toggleMenu}title='notes' /></NavLink>
                 <NavLink to="/mail"><img src="./img/gmailll.png" onClick={this.toggleMenu}title='mail' /></NavLink>
                 <NavLink to="/book"><img src="./img/books.png" onClick={this.toggleMenu}title='books' /></NavLink>
