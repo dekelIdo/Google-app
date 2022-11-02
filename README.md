@@ -3,8 +3,11 @@
 Demo app inspired Gmail & Google Note 
 [Here is my project link](https://dekelido.github.io/Google-app/#/ "Google_App link")
 
-My first app in React, in which you can manage inbox mail and a to-do note list.
 <img width="947" alt="Google-app" src="https://user-images.githubusercontent.com/109578899/193601290-bc4edfa8-3dbe-46e4-b2db-d3f7d5415ca9.png">
+
+## Google-app Description
+My first app in React, in which you can manage inbox mail and a to-do note list.
+I learned a bit about the canvas technology and decided to incorporate it into the project as part of the google note.
 
 ### Technologies
 - React CLI & Github pages
@@ -13,9 +16,6 @@ My first app in React, in which you can manage inbox mail and a to-do note list.
 - Canvas
 - Css
 
-# Google Note - Canvas, Upload files.
-<img width="832" alt="Note-app" src="https://user-images.githubusercontent.com/109578899/193601629-1806c30b-5e2c-4955-b00b-abdc86eb4081.png">
-
 ## Features
 - CRUDL emails & notes
 - Pin and mark emails & notes as 'favorite' , 'important' and much more.
@@ -23,6 +23,8 @@ My first app in React, in which you can manage inbox mail and a to-do note list.
 - Send email to 'trush' and option to remove for permanently
 - Responsive and well designed !
 
+# Google Note - Canvas, Upload files.
+<img width="832" alt="Note-app" src="https://user-images.githubusercontent.com/109578899/193601629-1806c30b-5e2c-4955-b00b-abdc86eb4081.png">
 
 # Mobile Design
 <img width="576" alt="Google-app-mobile" src="https://user-images.githubusercontent.com/109578899/193601931-c4c40792-f4c9-48d2-a2ad-4f23447b6cc0.png">
