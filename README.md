@@ -24,7 +24,7 @@ I learned a bit about the canvas technology and decided to incorporate it into t
 - Responsive and well designed !
 
 # Google Note - Canvas, Upload files.
-<img width="832" alt="Note-app" src="https://user-images.githubusercontent.com/109578899/193601629-1806c30b-5e2c-4955-b00b-abdc86eb4081.png">
+<img width="947" alt="Note-app" src="https://user-images.githubusercontent.com/109578899/193601629-1806c30b-5e2c-4955-b00b-abdc86eb4081.png">
 
 # Mobile Design
-<img width="832" alt="Mobile GoogleApp" src="https://user-images.githubusercontent.com/109578899/199727305-d9f3a81a-3446-4b06-a6db-f278a4018fc2.png">
+<img width="947" alt="Mobile GoogleApp" src="https://user-images.githubusercontent.com/109578899/199727305-d9f3a81a-3446-4b06-a6db-f278a4018fc2.png">
