@@ -27,4 +27,4 @@ I learned a bit about the canvas technology and decided to incorporate it into t
 <img width="832" alt="Note-app" src="https://user-images.githubusercontent.com/109578899/193601629-1806c30b-5e2c-4955-b00b-abdc86eb4081.png">
 
 # Mobile Design
-<img width="576" alt="Google-app-mobile" src="https://user-images.githubusercontent.com/109578899/193601931-c4c40792-f4c9-48d2-a2ad-4f23447b6cc0.png">
+<img width="832" alt="Mobile GoogleApp" src="https://user-images.githubusercontent.com/109578899/199727305-d9f3a81a-3446-4b06-a6db-f278a4018fc2.png">
